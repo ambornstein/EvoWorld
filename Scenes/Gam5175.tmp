@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c87dovsr3h0lu"]
+
+[ext_resource type="PackedScene" uid="uid://6vp6k4eq2ckk" path="res://Maps/map.tscn" id="1_a7af5"]
+[ext_resource type="PackedScene" uid="uid://cy552lkvwakdk" path="res://Maps/village.tscn" id="2_oewms"]
+[ext_resource type="PackedScene" uid="uid://dv5g2gkffcbwn" path="res://Scenes/Enemy.tscn" id="3_l0cty"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Player.tscn" id="4_jccrf"]
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [54.0]
+
+[node name="TileMap" parent="." instance=ExtResource("1_a7af5")]
+visible = false
+
+[node name="Villagw" parent="." instance=ExtResource("2_oewms")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(50, -42)
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("4_jccrf")]
+position = Vector2(154, 408)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_smoothed = true

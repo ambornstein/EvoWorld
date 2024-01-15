@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt0vhkk770jy4"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_4u68u"]
+[ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="2_77nsx"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_lhlu2"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="4_u1uu3"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="5_ufpkm"]
+[ext_resource type="Script" path="res://Scripts/MovementManager.gd" id="6_d2h6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78s8c"]
+size = Vector2(20, 26)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4u68u")
+movement = NodePath("MovementManager")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_77nsx")
+region_enabled = true
+region_rect = Rect2(1376, 512, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_78s8c")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_u1uu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_78s8c")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+collision_mask = 0
+script = ExtResource("3_lhlu2")
+health_bar = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_78s8c")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_ufpkm")
+max_health = 20
+
+[node name="MovementManager" type="Node" parent="."]
+script = ExtResource("6_d2h6m")
+ACCELERATION = null
+MAX_SPEED = null
+TOLERANCE = null
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

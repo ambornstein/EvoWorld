@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv5g2gkffcbwn"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_4u68u"]
+[ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="2_77nsx"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_lhlu2"]
+[ext_resource type="Shape2D" uid="uid://vrykulefam1k" path="res://Scenes/human_collision.tres" id="4_tuf00"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="4_u1uu3"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="5_ufpkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6twv"]
+size = Vector2(16, 24)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_4u68u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(291, 136)
+texture = ExtResource("2_77nsx")
+region_enabled = true
+region_rect = Rect2(1184, 416, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(291, 136)
+shape = SubResource("RectangleShape2D_d6twv")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("3_lhlu2")
+health_bar = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -1)
+shape = ExtResource("4_tuf00")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_ufpkm")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("4_u1uu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(291, 136)
+shape = SubResource("RectangleShape2D_d6twv")

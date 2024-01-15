@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvpj3dra8smu2"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_x6oab"]
+[ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="2_8iwer"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="3_36vi1"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="4_27l3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi2x7"]
+size = Vector2(20, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju3wd"]
+size = Vector2(20, 26.5)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_x6oab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8iwer")
+region_enabled = true
+region_rect = Rect2(1280, 608, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_wi2x7")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_36vi1")
+health_bar = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_ju3wd")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_27l3h")
+max_health = 20
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
