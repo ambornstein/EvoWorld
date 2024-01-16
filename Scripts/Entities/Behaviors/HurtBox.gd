@@ -18,5 +18,3 @@ func _process(delta):
 
 func _on_area_entered(hitbox:Area2D):
 	health_bar.take_damage(5)
-	
-

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b800c4m6h3okp"]
+
+[ext_resource type="SpriteFrames" uid="uid://tyfdkk5gx6sc" path="res://Tiles/Structures/trees.tres" id="1_6fiyf"]
+
+[node name="Forest" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_6fiyf")

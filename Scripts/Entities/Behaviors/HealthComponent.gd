@@ -4,12 +4,12 @@ class_name HealthComponent
 @export var max_health := 10
 var health
 
+signal hurt
+
 func take_damage(value: int): 
 	health -= value
 	clamp(health, 0, max_health)
-	owner.get_node("Sprite2D").modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	owner.get_node("Sprite2D").modulate = Color.WHITE
+	emit_signal("hurt")
 	print("%s: %d/%d" % [owner.name, health, max_health])
 	
 # Called when the node enters the scene tree for the first time.

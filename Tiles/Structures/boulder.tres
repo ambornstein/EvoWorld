@@ -1,0 +1,100 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://bccl60kxojt31"]
+
+[ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="1_djw5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne83j"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(416, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdh6j"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(512, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_166dv"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(608, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg3cl"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(704, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjwdg"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(800, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdfru"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(896, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkde7"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(416, 416, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11naf"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(512, 416, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0av2x"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(608, 416, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onm0f"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(704, 416, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ktu"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(800, 416, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru415"]
+atlas = ExtResource("1_djw5d")
+region = Rect2(896, 416, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne83j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdh6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_166dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg3cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjwdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdfru")
+}],
+"loop": true,
+"name": &"claystone",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkde7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11naf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0av2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onm0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ktu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru415")
+}],
+"loop": true,
+"name": &"limestone",
+"speed": 5.0
+}]
