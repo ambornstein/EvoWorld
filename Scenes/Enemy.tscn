@@ -198,12 +198,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78s8c"]
-size = Vector2(20, 26)
+size = Vector2(16, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wsikq"]
 radius = 100.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+z_index = 1
 collision_layer = 0
 script = ExtResource("1_f3n8p")
 health = NodePath("HealthComponent")
@@ -217,7 +218,6 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_78s8c")
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_u1uu3")
@@ -227,7 +227,6 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_78s8c")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
-visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_lhlu2")
@@ -242,12 +241,10 @@ script = ExtResource("5_ufpkm")
 max_health = 20
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_wsikq")
 
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]

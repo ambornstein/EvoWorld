@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c87dovsr3h0lu"]
+
+[ext_resource type="PackedScene" uid="uid://cy552lkvwakdk" path="res://Maps/Village.tscn" id="2_oewms"]
+[ext_resource type="Script" path="res://Scenes/Structures/TileEvironment.gd" id="2_q6wif"]
+[ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Enemy.tscn" id="3_l0cty"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Player.tscn" id="4_jccrf"]
+[ext_resource type="PackedScene" uid="uid://dmwyvked0stfy" path="res://Scenes/Structures/boulders/Boulder.tscn" id="5_qfeis"]
+[ext_resource type="PackedScene" uid="uid://b800c4m6h3okp" path="res://Scenes/Structures/tree/Forest.tscn" id="7_wb8oa"]
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [54.0]
+
+[node name="Village" parent="." instance=ExtResource("2_oewms")]
+collision_visibility_mode = 1
+script = ExtResource("2_q6wif")
+
+[node name="Forest" parent="." instance=ExtResource("7_wb8oa")]
+position = Vector2(468, 411)
+type = 0
+size = 7
+
+[node name="Enemy3" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(1108, 546)
+scale = Vector2(2, 2)
+
+[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(1033, 359)
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." instance=ExtResource("4_jccrf")]
+position = Vector2(579, 323)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_smoothed = true
+
+[node name="Enemy2" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(1245, 432)
+scale = Vector2(2, 2)
+
+[node name="BoulderS" parent="." instance=ExtResource("5_qfeis")]
+position = Vector2(419, 324)
+resource = 2

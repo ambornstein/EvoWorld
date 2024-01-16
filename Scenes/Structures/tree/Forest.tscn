@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://b800c4m6h3okp"]
+[gd_scene load_steps=6 format=3 uid="uid://b800c4m6h3okp"]
 
 [ext_resource type="SpriteFrames" uid="uid://tyfdkk5gx6sc" path="res://Tiles/Structures/trees.tres" id="1_6fiyf"]
+[ext_resource type="Script" path="res://Scripts/Structures/Forest.gd" id="1_se7ae"]
 
-[node name="Forest" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v42y0"]
+size = Vector2(12, 29)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usro0"]
+radius = 18.6149
+height = 53.6341
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqg6o"]
+size = Vector2(57, 55)
+
+[node name="Forest" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_se7ae")
+type = 1
+size = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_6fiyf")
+animation = &"poplar"
+
+[node name="CollisionSmall" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 0.5)
+shape = SubResource("RectangleShape2D_v42y0")
+
+[node name="CollisionMedium" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 0.865683
+shape = SubResource("CapsuleShape2D_usro0")
+disabled = true
+
+[node name="CollisionLarge" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_jqg6o")
+disabled = true

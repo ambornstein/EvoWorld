@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmwyvked0stfy"]
+
+[ext_resource type="Script" path="res://Scripts/Structures/Boulder.gd" id="1_are3k"]
+[ext_resource type="SpriteFrames" uid="uid://bccl60kxojt31" path="res://Tiles/Structures/boulder.tres" id="1_prv1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sk2ny"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nckbx"]
+radius = 15.0333
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_buy5o"]
+radius = 15.6199
+height = 42.7473
+
+[node name="Boulder" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_are3k")
+ore = 2
+resource = 1
+size = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_prv1d")
+animation = &"limestone"
+
+[node name="CollisionSmall" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_sk2ny")
+
+[node name="CollisionMedium" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_nckbx")
+
+[node name="CollisionLarge" type="CollisionShape2D" parent="."]
+position = Vector2(2.98023e-08, 2)
+rotation = 0.867429
+shape = SubResource("CapsuleShape2D_buy5o")

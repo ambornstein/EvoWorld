@@ -7,6 +7,8 @@ var Fireball = preload("res://Scenes/Fireball.tscn")
 
 @onready var sprite = $AnimatedSprite2D
 
+var reachable_resource
+
 func _ready():
 	health.connect("hurt", _damaged_animation)
 
@@ -15,6 +17,8 @@ func _process(delta):
 		#print(get_global_mouse_position())
 		var vec = position.direction_to(get_global_mouse_position())
 		_shoot(vec)
+	elif Input.is_action_just_pressed("space"):
+		reachable_resource.destroy()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -32,3 +36,8 @@ func _damaged_animation():
 	sprite.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
+
+func _on_reach_body_entered(body):
+	print(body)
+	if body.name == "Forest":
+		reachable_resource = body

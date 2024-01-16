@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="1_y8o3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ky0vb"]
+resource_name = "0"
 texture = ExtResource("1_y8o3f")
 margins = Vector2i(32, 32)
 separation = Vector2i(32, 32)
