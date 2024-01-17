@@ -19,6 +19,18 @@ var boulder = preload("res://Scenes/Structures/boulders/Boulder.tscn")
 	Vector2i(1,5): generate_forest.bind(2, Forest.TreeType.CHOPPED_DOWN),
 	Vector2i(2,5): generate_forest.bind(3, Forest.TreeType.CHOPPED_DOWN),
 	Vector2i(3,5): generate_forest.bind(7, Forest.TreeType.CHOPPED_DOWN),
+	Vector2i(4,4): generate_boulder.bind(1, Boulder.Ore.NONE, Structure.MaterialContent.LIMESTONE),
+	Vector2i(5,4): generate_boulder.bind(2, Boulder.Ore.NONE, Structure.MaterialContent.LIMESTONE),
+	Vector2i(6,4): generate_boulder.bind(3, Boulder.Ore.NONE, Structure.MaterialContent.LIMESTONE),
+	Vector2i(7,4): generate_boulder.bind(4, Boulder.Ore.NONE, Structure.MaterialContent.LIMESTONE),
+	Vector2i(8,4): generate_boulder.bind(4, Boulder.Ore.IRON, Structure.MaterialContent.LIMESTONE),
+	Vector2i(9,4): generate_boulder.bind(4, Boulder.Ore.SILVER, Structure.MaterialContent.LIMESTONE),
+	Vector2i(4,5): generate_boulder.bind(1, Boulder.Ore.NONE, Structure.MaterialContent.CLAYSTONE),
+	Vector2i(5,5): generate_boulder.bind(2, Boulder.Ore.NONE, Structure.MaterialContent.CLAYSTONE),
+	Vector2i(6,5): generate_boulder.bind(3, Boulder.Ore.NONE, Structure.MaterialContent.CLAYSTONE),
+	Vector2i(7,5): generate_boulder.bind(4, Boulder.Ore.NONE, Structure.MaterialContent.CLAYSTONE),
+	Vector2i(8,5): generate_boulder.bind(4, Boulder.Ore.IRON, Structure.MaterialContent.CLAYSTONE),
+	Vector2i(9,5): generate_boulder.bind(4, Boulder.Ore.SILVER, Structure.MaterialContent.CLAYSTONE)
 }
 
 func generate_forest(size, type):
@@ -27,19 +39,21 @@ func generate_forest(size, type):
 	item.type = type
 	return item
 
-func generate_boulder(size, ore):
+func generate_boulder(size, ore, stone_type):
 	var item = boulder.instantiate()
 	item.size = size
 	item.ore = ore
+	item.resource = stone_type
 	return item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_replace_tiles_with_scenes()
+	_replace_tiles_with_scenes(0)
+	_replace_tiles_with_scenes(1)
 
-func _replace_tiles_with_scenes(scene_dictionary: Dictionary = TILE_SCENES): 
-	for tile_pos in get_used_cells(0):
-		var tile_id = get_cell_atlas_coords(0, tile_pos)
+func _replace_tiles_with_scenes(map_layer: int, scene_dictionary: Dictionary = TILE_SCENES): 
+	for tile_pos in get_used_cells(map_layer):
+		var tile_id = get_cell_atlas_coords(map_layer, tile_pos)
 		
 		if scene_dictionary.has(tile_id):
 			var object_scene = scene_dictionary[tile_id]

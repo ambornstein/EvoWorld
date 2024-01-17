@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b800c4m6h3okp"]
+[gd_scene load_steps=7 format=3 uid="uid://b800c4m6h3okp"]
 
 [ext_resource type="SpriteFrames" uid="uid://tyfdkk5gx6sc" path="res://Tiles/Structures/trees.tres" id="1_6fiyf"]
 [ext_resource type="Script" path="res://Scripts/Structures/Forest.gd" id="1_se7ae"]
@@ -12,6 +12,9 @@ height = 53.6341
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqg6o"]
 size = Vector2(57, 55)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jluv2"]
+radius = 32.0
 
 [node name="Forest" type="StaticBody2D"]
 collision_mask = 0
@@ -31,10 +34,13 @@ shape = SubResource("RectangleShape2D_v42y0")
 visible = false
 rotation = 0.865683
 shape = SubResource("CapsuleShape2D_usro0")
-disabled = true
 
 [node name="CollisionLarge" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_jqg6o")
-disabled = true
+
+[node name="HarvestRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestRange"]
+shape = SubResource("CircleShape2D_jluv2")

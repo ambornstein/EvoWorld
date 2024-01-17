@@ -56,3 +56,4 @@ func destroy():
 	
 func harvest():
 	size -= 1
+	size = clamp(size, 1, MAX_YIELD)

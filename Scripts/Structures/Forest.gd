@@ -34,6 +34,3 @@ func _process(delta):
 			set_frame(3)
 	if type == 2:
 		clear_collision()
-
-func harvest():
-	super.harvest()
