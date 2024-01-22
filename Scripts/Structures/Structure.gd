@@ -28,7 +28,7 @@ func set_animation(s: String):
 	
 func select_collision(i: int):
 	i = clamp(i, 0, 2)
-	clear_collision()
+	_clear_collision()
 	
 	match i:
 		0:
@@ -38,7 +38,7 @@ func select_collision(i: int):
 		2:
 			large_shape.disabled = false
 
-func clear_collision():
+func _clear_collision():
 	small_shape.disabled = true
 	medium_shape.disabled = true
 	large_shape.disabled = true
@@ -51,7 +51,7 @@ func _ready():
 func _process(delta):
 	pass
 	
-func destroy():
+func _destroy():
 	queue_free()
 	
 func harvest():

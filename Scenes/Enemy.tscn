@@ -46,13 +46,13 @@ region = Rect2(1280, 512, 64, 64)
 atlas = ExtResource("2_77nsx")
 region = Rect2(1376, 512, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8rmfl"]
-atlas = ExtResource("2_77nsx")
-region = Rect2(1472, 512, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewd8l"]
 atlas = ExtResource("2_77nsx")
 region = Rect2(1568, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rmfl"]
+atlas = ExtResource("2_77nsx")
+region = Rect2(1472, 512, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pq02u"]
 atlas = ExtResource("2_77nsx")
@@ -141,10 +141,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_04gx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8rmfl")
+"texture": SubResource("AtlasTexture_ewd8l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ewd8l")
+"texture": SubResource("AtlasTexture_8rmfl")
 }],
 "loop": true,
 "name": &"green",
@@ -211,13 +211,15 @@ health = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxsb0")
-animation = &"blue"
+animation = &"green"
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_78s8c")
 
 [node name="HitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_u1uu3")
@@ -227,12 +229,14 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_78s8c")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_lhlu2")
 health_bar = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_78s8c")
 
@@ -241,6 +245,7 @@ script = ExtResource("5_ufpkm")
 max_health = 20
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

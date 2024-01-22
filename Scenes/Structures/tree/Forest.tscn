@@ -3,20 +3,20 @@
 [ext_resource type="SpriteFrames" uid="uid://tyfdkk5gx6sc" path="res://Tiles/Structures/trees.tres" id="1_6fiyf"]
 [ext_resource type="Script" path="res://Scripts/Structures/Forest.gd" id="1_se7ae"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v42y0"]
-size = Vector2(12, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtb1k"]
+radius = 8.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usro0"]
-radius = 18.6149
-height = 53.6341
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jvi46"]
+radius = 6.0
+height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqg6o"]
-size = Vector2(57, 55)
+size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jluv2"]
 radius = 32.0
 
-[node name="Forest" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_se7ae")
 type = 1
@@ -24,23 +24,24 @@ size = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_6fiyf")
-animation = &"poplar"
+animation = &"stump"
 
 [node name="CollisionSmall" type="CollisionShape2D" parent="."]
-position = Vector2(-10, 0.5)
-shape = SubResource("RectangleShape2D_v42y0")
+visible = false
+shape = SubResource("CircleShape2D_dtb1k")
 
 [node name="CollisionMedium" type="CollisionShape2D" parent="."]
 visible = false
-rotation = 0.865683
-shape = SubResource("CapsuleShape2D_usro0")
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_jvi46")
 
 [node name="CollisionLarge" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_jqg6o")
 
 [node name="HarvestRange" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestRange"]
+visible = false
 shape = SubResource("CircleShape2D_jluv2")

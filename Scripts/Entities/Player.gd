@@ -21,7 +21,10 @@ func _process(delta):
 	elif Input.is_action_just_pressed("space"):
 		#print(get_closest_harvestable())
 		if get_closest_harvestable():
-			get_closest_harvestable().get_parent().harvest()
+			var harvestable: Structure = get_closest_harvestable().get_parent()
+			harvestable.harvest()
+			if harvestable.size == 1 and harvestable.has_method("exhaust"):
+				harvestable.exhaust()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -33,7 +36,7 @@ func _shoot(direction: Vector2):
 	add_child(fire)
 	fire.fire(direction)
 	
-func get_closest_harvestable():
+func get_closest_harvestable() -> Area2D:
 	var areas = interact_radius.get_overlapping_areas()
 	var closest
 	for a in areas:
