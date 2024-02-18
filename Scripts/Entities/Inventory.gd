@@ -1,11 +1,37 @@
-extends Node
+extends PanelContainer
 
+const Slot = preload("res://Scenes/Item/Slot.tscn")
 
-# Called when the node enters the scene tree for the first time.
+@export var inv_data: InventoryData
+@onready var item_grid = $MarginContainer/ItemGrid
+
+func set_inventory_data(inv: InventoryData):
+	populate_item_grid(inv.slot_array)
+
+func populate_item_grid(slots: Array[SlotData]):
+	for item in item_grid.get_children():
+		item.queue_free()
+		
+	for s in slots:
+		var slot = Slot.instantiate()
+		item_grid.add_child(slot)
+		
+		if s:
+			slot.set_slot_data(s)
+	
 func _ready():
-	pass # Replace with function body.
+	#var inv_data = preload("res://Scenes/Item/Rescources/test_inv.tres")
+	populate_item_grid(inv_data.slot_array)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _enable():
+	visible = true
+	
+func _disable():
+	visible = false
+	
+func _toggle():
+	visible = !visible
+	
+#func _clear_selection():
+	#for item in get_children():
+	

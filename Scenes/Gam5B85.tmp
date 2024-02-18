@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c87dovsr3h0lu"]
+
+[ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Entities/Enemy.tscn" id="3_l0cty"]
+[ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
+[ext_resource type="PackedScene" uid="uid://c4tir1qxklrkk" path="res://Scenes/Zones/FadeArea.tscn" id="4_s6h6o"]
+[ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thubb"]
+size = Vector2(148.5, 140.5)
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [54.0]
+
+[node name="Castle" parent="." instance=ExtResource("3_ufmb6")]
+y_sort_enabled = true
+layer_0/y_sort_enabled = true
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_2/y_sort_enabled = true
+layer_3/y_sort_enabled = true
+layer_3/z_index = 3
+layer_4/y_sort_enabled = true
+layer_4/z_index = 3
+
+[node name="FadeArea" parent="Castle" instance=ExtResource("4_s6h6o")]
+position = Vector2(30, -49)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle/FadeArea"]
+position = Vector2(-6.66667, -54.3333)
+shape = SubResource("RectangleShape2D_thubb")
+
+[node name="Chest" parent="." instance=ExtResource("5_pgh71")]
+z_index = 1
+position = Vector2(0, -137)
+
+[node name="Player" parent="." instance=ExtResource("4_jccrf")]
+z_index = 0
+position = Vector2(-52, -66)
+speed = 200
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_smoothed = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(162, -31)
+
+[connection signal="body_entered" from="Castle/FadeArea" to="Castle/FadeArea" method="_on_player_entered"]
+[connection signal="body_exited" from="Castle/FadeArea" to="Castle/FadeArea" method="_on_player_exited"]

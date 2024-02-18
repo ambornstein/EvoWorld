@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8axsn76dn2hx"]
+
+[ext_resource type="Script" path="res://Scripts/Structures/Container/Chest.gd" id="1_tyjly"]
+[ext_resource type="Texture2D" uid="uid://kjy5x72xpeur" path="res://Tiles/Castle/roguelikeSheet_roofmod.png" id="2_fxm2k"]
+[ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Scenes/Item/Rescources/test_inv.tres" id="2_jybjn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rghx5"]
+atlas = ExtResource("2_fxm2k")
+region = Rect2(608, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itvo4"]
+atlas = ExtResource("2_fxm2k")
+region = Rect2(608, 176, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lclri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rghx5")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itvo4")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fy6c"]
+size = Vector2(16, 16)
+
+[node name="Chest" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_tyjly")
+inventory = ExtResource("2_jybjn")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lclri")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7fy6c")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

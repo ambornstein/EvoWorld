@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cn1rdqn3lujtm"]
+
+[ext_resource type="Script" path="res://Scripts/Data/item_data.gd" id="1_olxhq"]
+[ext_resource type="Texture2D" uid="uid://b8i3ckhwptvjn" path="res://Tiles/axe.png" id="2_8k6ts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jncod"]
+atlas = ExtResource("2_8k6ts")
+region = Rect2(0, 0, 128, 128)
+
+[resource]
+script = ExtResource("1_olxhq")
+name = "Axe"
+description = "A tool for chopping wood"
+stackable = false
+texture = SubResource("AtlasTexture_jncod")

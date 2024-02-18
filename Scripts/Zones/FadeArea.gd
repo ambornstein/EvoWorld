@@ -1,4 +1,5 @@
 extends TransformArea
+@export_flags_2d_render var modulate_layer: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,8 @@ func _untransform(node):
 
 func _fade(node):
 	if _can_fade(node):
-		node.set_layer_alpha(3, 0.5)
+		node.set_layer_alpha(3, 0)
+		node.set_layer_alpha(4, 0.5)
 	else:
 		for child in node.get_children():
 			_fade(child)
@@ -24,6 +26,7 @@ func _fade(node):
 func _unfade(node):
 	if _can_fade(node):
 		node.set_layer_alpha(3, 1)
+		node.set_layer_alpha(4, 1)
 	else:
 		for child in node.get_children():
 			_unfade(child)

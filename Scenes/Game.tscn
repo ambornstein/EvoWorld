@@ -1,43 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://c87dovsr3h0lu"]
+[gd_scene load_steps=10 format=3 uid="uid://c87dovsr3h0lu"]
 
-[ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Enemy.tscn" id="3_l0cty"]
-[ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/castle.tscn" id="3_ufmb6"]
-[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Player.tscn" id="4_jccrf"]
-[ext_resource type="PackedScene" uid="uid://c4tir1qxklrkk" path="res://Scenes/Zones/FadeArea.tscn" id="4_s6h6o"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_fgeks"]
+[ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Entities/Enemy.tscn" id="3_l0cty"]
+[ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
+[ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
+[ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Scenes/Item/Rescources/test_inv.tres" id="5_rxidj"]
+[ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/Item/Inventory.tscn" id="6_oac1j"]
+[ext_resource type="PackedScene" uid="uid://b4bkhoptxm3dl" path="res://Scenes/Item/ContainerItems.tscn" id="8_1w36p"]
+[ext_resource type="Resource" uid="uid://rh31vyiwnjto" path="res://Scenes/Item/Rescources/chest_inv.tres" id="9_hjq0y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_thubb"]
-size = Vector2(148.5, 140.5)
-
-[node name="Node2D" type="Node2D"]
-scale = Vector2(3, 3)
+[node name="Game" type="Node2D"]
+script = ExtResource("1_fgeks")
 metadata/_edit_horizontal_guides_ = [54.0]
 
 [node name="Castle" parent="." instance=ExtResource("3_ufmb6")]
+y_sort_enabled = true
+layer_0/y_sort_enabled = true
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-131049, 2097152, 8, -131048, 2162688, 8, -262143, 1966080, 8, -262142, 2031616, 8)
+layer_2/y_sort_enabled = true
+layer_3/y_sort_enabled = true
+layer_3/z_index = 3
+layer_4/y_sort_enabled = true
+layer_4/z_index = 3
+layer_4/tile_data = PackedInt32Array(-589826, 2228224, 22, -524290, 2228224, 22, -458754, 2228224, 22, -393218, 2228224, 22, -327682, 2228224, 22, -262146, 2359296, 24, -655361, 2424832, 23, -589825, 2228224, 268435478, -524289, 2228224, 268435478, -458753, 2228224, 268435478, -393217, 2228224, 268435478, -327681, 2228224, 268435478, -262145, 2424832, 24, -720896, 2228224, 22, -655360, 2228224, 22, -589824, 2228224, 22, -524288, 2228224, 22, -458752, 2228224, 22, -393216, 2359296, 24, -720895, 2228224, 268435478, -655359, 2228224, 268435478, -589823, 2228224, 268435478, -524287, 2228224, 268435478, -458751, 2228224, 268435478, -393215, 2424832, 24, -720894, 2293760, 268435478, -655358, 2293760, 268435478, -589822, 2293760, 268435478, -524286, 2293760, 268435478, -458750, 2293760, 268435478, -393214, 2359296, 22, -655357, 2293760, 22, -589821, 2293760, 22, -524285, 2293760, 22, -458749, 2293760, 22, -393213, 2424832, 22, -655356, 2293760, 268435478, -589820, 2293760, 268435478, -524284, 2293760, 268435478, -458748, 2293760, 268435478, -393212, 2293760, 268435478, -327676, 2359296, 22, -655362, 2359296, 23, -786432, 2359296, 23, -786431, 2424832, 23, -786430, 2359296, 21, -786429, 2424832, 21, -720893, 2293760, 22, -720892, 2359296, 21, -720891, 2424832, 21, -655355, 2293760, 22, -589819, 2293760, 22, -524283, 2293760, 22, -458747, 2293760, 22, -393211, 2293760, 22, -327675, 2424832, 22, -524271, 1835008, 14, -524270, 1900544, 14, -524269, 1900544, 14, -524268, 1900544, 14, -524267, 1900544, 14, -524266, 1966080, 14, -524263, 2031616, 14, -524262, 2097152, 14, -524261, 2097152, 14, -524260, 2097152, 14, -524259, 2097152, 14, -524258, 2162688, 14, -262143, 1966080, 6, -262142, 2031616, 6, -131049, 2097152, 7, -131048, 2162688, 7, -393194, 2162688, 15, -458730, 2162688, 15, -458731, 2097152, 15, -458732, 2097152, 15, -458733, 2097152, 15, -196590, 1769472, 15, -458734, 2097152, 15, -196591, 1835008, 15, -262127, 2031616, 15, -327663, 2031616, 15, -393199, 2031616, 15, -458735, 2031616, 15, -131053, 1835008, 15, -262120, 2097152, 15, -262121, 2097152, 15, -262122, 2097152, 15, -327658, 2097152, 15, -327659, 2097152, 15, -393195, 2097152, 15, -393196, 2097152, 15, -393197, 2097152, 15, -393198, 2097152, 15, -327662, 2097152, 15, -262126, 2097152, 15, -262125, 2097152, 15, -327661, 2097152, 15, -327660, 2097152, 15, -262124, 2097152, 15, -196588, 2097152, 15, -196589, 2097152, 15, -131052, 1769472, 15, -131051, 1769472, 15, -196587, 2097152, 15, -262123, 2097152, 15, -196586, 2097152, 15, -131050, 1769472, 15, -196585, 2097152, 15, -196584, 2097152, 15, -327655, 2097152, 15, -262119, 2097152, 15, -196583, 2097152, 15, -131047, 1835008, 15, -458726, 2097152, 15, -393190, 2097152, 15, -327654, 2097152, 15, -262118, 2097152, 15, -196582, 2097152, 15, -131046, 1769472, 15, -458725, 2097152, 15, -393189, 2097152, 15, -327653, 2097152, 15, -262117, 2097152, 15, -196581, 2097152, 15, -131045, 1769472, 15, -458724, 2097152, 15, -393188, 2097152, 15, -327652, 2097152, 15, -262116, 2097152, 15, -196580, 2097152, 15, -131044, 1966080, 15, -458723, 2097152, 15, -393187, 2097152, 15, -327651, 2097152, 15, -262115, 2097152, 15, -196579, 1769472, 15, -458722, 2162688, 15, -393186, 2162688, 15, -327650, 2162688, 15, -262114, 2162688, 15, -196578, 1966080, 15, -458727, 2031616, 15, -393191, 2031616, 15, -327656, 2097152, 16, -327657, 2097152, 16)
 
-[node name="FadeArea" parent="Castle" instance=ExtResource("4_s6h6o")]
-position = Vector2(30, -49)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Castle/FadeArea"]
-position = Vector2(-3.25, -53.25)
-shape = SubResource("RectangleShape2D_thubb")
+[node name="Chest" parent="." instance=ExtResource("5_pgh71")]
+z_index = 1
+position = Vector2(0, -137)
 
 [node name="Player" parent="." instance=ExtResource("4_jccrf")]
 z_index = 0
 position = Vector2(-52, -66)
-scale = Vector2(0.7, 0.7)
+inventory = ExtResource("5_rxidj")
 speed = 200
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
 limit_smoothed = true
+
+[node name="Inventory" parent="Player/Camera2D" instance=ExtResource("6_oac1j")]
+visible = false
+offset_left = -32.5
+offset_top = -78.75
+offset_right = 347.5
+offset_bottom = 153.25
+inv_data = ExtResource("5_rxidj")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerItems" parent="Player/Camera2D" instance=ExtResource("8_1w36p")]
+visible = false
+z_index = 3
+offset_left = -247.5
+offset_top = -78.75
+offset_right = -15.5
+offset_bottom = 153.25
+inv_data = ExtResource("9_hjq0y")
 
 [node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
 position = Vector2(162, -31)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_l0cty")]
-position = Vector2(199, -95)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_l0cty")]
-position = Vector2(62, 19)
-
-[connection signal="body_entered" from="Castle/FadeArea" to="Castle/FadeArea" method="_on_player_entered"]
-[connection signal="body_exited" from="Castle/FadeArea" to="Castle/FadeArea" method="_on_player_exited"]

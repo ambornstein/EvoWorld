@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvpj3dra8smu2"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1_4c4uh"]
+[ext_resource type="SpriteFrames" uid="uid://b3w8ovso4iwkb" path="res://Tiles/Entities/Characters.tres" id="2_1yvr0"]
+[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_36vi1"]
+[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_27l3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi2x7"]
+size = Vector2(16, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju3wd"]
+size = Vector2(16, 24.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pehn5"]
+radius = 39.0032
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_4c4uh")
+health = NodePath("HealthComponent")
+speed = 50
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_1yvr0")
+animation = &"blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_wi2x7")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_36vi1")
+health_bar = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_ju3wd")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_27l3h")
+max_health = 20
+
+[node name="Reach" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
+shape = SubResource("CircleShape2D_pehn5")
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="area_entered" from="Reach" to="." method="_on_reach_area_entered"]
+[connection signal="area_exited" from="Reach" to="." method="_on_reach_area_exited"]
+[connection signal="body_entered" from="Reach" to="." method="_on_reach_body_entered"]

@@ -32,6 +32,7 @@ enum Layers {
 	GROUND,
 	INSIDE,
 	STRUCT,
+	FACADE,
 	ROOF
 }
 
@@ -55,8 +56,8 @@ func _generate_boulder(size, stone_type, moss):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_replace_tiles_with_scenes(0)
-	_replace_tiles_with_scenes(2)
+	_replace_tiles_with_scenes(Layers.GROUND)
+	_replace_tiles_with_scenes(Layers.STRUCT)
 
 func _replace_tiles_with_scenes(map_layer: int, scene_dictionary: Dictionary = TILE_SCENES): 
 	for tile_pos in get_used_cells(map_layer):
