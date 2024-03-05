@@ -74,10 +74,7 @@ func _replace_tile_with_object(tile_pos: Vector2i, generator: Callable, parent: 
 		var obj_pos = map_to_local(tile_pos) 
 		parent.add_child.call_deferred(obj)
 		obj.global_position = obj_pos
-		
-func _process(delta):
-	pass
-		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_resource_destroyed(delta):
 	pass

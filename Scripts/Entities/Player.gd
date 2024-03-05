@@ -70,6 +70,7 @@ func _on_reach_body_entered(body):
 	if body.name == "Chest":
 		print(body)
 		reachable_resource = body
+	
 
 func _on_reach_body_exited(body):
 	reachable_resource = null

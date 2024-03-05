@@ -11,5 +11,5 @@ region = Rect2(0, 0, 128, 128)
 script = ExtResource("1_olxhq")
 name = "Axe"
 description = "A tool for chopping wood"
-stackable = false
+stackable = true
 texture = SubResource("AtlasTexture_jncod")
