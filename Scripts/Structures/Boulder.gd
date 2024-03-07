@@ -1,24 +1,25 @@
-extends Structure
+extends StaticBody2D
 class_name Boulder
 
-enum StoneType {
-	LIMESTONE,
-	CLAYSTONE
-}
+@export var structure_data: BoulderData
+@export var collision: CollisionShape2D
+@export var icon: Sprite2D
 
-@export var stone_type: StoneType
-@export var moss: bool
+@export var MAX_YIELD: int = 7
+@export var size: int = 1
 
+func set_boulder_data(boulder: BoulderData):
+	structure_data = boulder
+	icon.texture = structure_data.struct_texture
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MAX_YIELD = 4
-	super._ready()
-	
-	set_animation(StoneType.keys()[stone_type].to_lower())
-	select_collision(0)
-	if moss:
-		set_frame(3)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if structure_data:
+		set_boulder_data(structure_data)
+		
+func exhaust():
+	queue_free()
+
+func harvest():
+	size -= 1
+	size = clamp(size, 1, MAX_YIELD)

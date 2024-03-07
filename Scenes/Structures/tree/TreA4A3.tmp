@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b800c4m6h3okp"]
+
+[ext_resource type="Script" path="res://Scripts/Structures/Tree.gd" id="1_5s480"]
+[ext_resource type="Texture2D" uid="uid://bta8i32tcjj80" path="res://Rescources/Structure/Bush/bush_winter.tres" id="3_akg47"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtb1k"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jluv2"]
+radius = 32.0
+
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("collision")]
+collision_mask = 0
+script = ExtResource("1_5s480")
+collision = NodePath("Collision")
+size = 2
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("3_akg47")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dtb1k")
+
+[node name="HarvestRange" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestRange"]
+visible = false
+shape = SubResource("CircleShape2D_jluv2")

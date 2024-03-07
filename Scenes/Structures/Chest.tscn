@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8axsn76dn2hx"]
 
 [ext_resource type="Script" path="res://Scripts/Structures/Container/Chest.gd" id="1_tyjly"]
-[ext_resource type="Resource" uid="uid://rh31vyiwnjto" path="res://Rescources/chest_inv.tres" id="2_f3yke"]
+[ext_resource type="Resource" uid="uid://rh31vyiwnjto" path="res://Rescources/Inventory/chest_inv.tres" id="2_f3yke"]
 [ext_resource type="Texture2D" uid="uid://kjy5x72xpeur" path="res://Tiles/Castle/roguelikeSheet_roofmod.png" id="2_fxm2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rghx5"]
@@ -41,7 +41,7 @@ inventory = ExtResource("2_f3yke")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lclri")
-animation = &"open"
+animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7fy6c")

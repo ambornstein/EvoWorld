@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://c8hcpvv7oqevm"]
+
+[ext_resource type="Texture2D" uid="uid://kjy5x72xpeur" path="res://Tiles/Castle/roguelikeSheet_roofmod.png" id="1_gnamv"]
+
+[resource]
+atlas = ExtResource("1_gnamv")
+region = Rect2(224, 144, 16, 16)

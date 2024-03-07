@@ -9,7 +9,6 @@ func _ready():
 	populate_item_grid(inv_data)
 
 func set_inventory_data(inv: InventoryData):
-	inv_data = inv
 	inv_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inv)
 

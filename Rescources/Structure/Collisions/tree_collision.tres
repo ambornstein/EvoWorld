@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CollisionData" load_steps=3 format=3 uid="uid://5so5us4cusas"]
+
+[ext_resource type="Script" path="res://Scripts/Data/collision_data.gd" id="1_iv6gt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jvi46"]
+radius = 6.0
+height = 18.0
+
+[resource]
+script = ExtResource("1_iv6gt")
+collision_shape = SubResource("CapsuleShape2D_jvi46")
+collision_transform = Vector2(0, 7)

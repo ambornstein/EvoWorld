@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bg0ruvkoet43p"]
+[gd_scene load_steps=35 format=3 uid="uid://bg0ruvkoet43p"]
 
 [ext_resource type="TileSet" uid="uid://gfd11sc36p4k" path="res://Tiles/Castle/castle.tres" id="1_unyao"]
 [ext_resource type="Script" path="res://Scripts/Structures/TileEvironment.gd" id="2_budy5"]
@@ -19,10 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://ceyt3y7s8y32c" path="res://Rescources/Structure/Tree/fruit_tree.tres" id="16_etral"]
 [ext_resource type="Texture2D" uid="uid://bhyauvwafxc64" path="res://Rescources/Structure/Bush/bare_bush.tres" id="17_d856p"]
 [ext_resource type="Texture2D" uid="uid://nk5ip7c3tqeu" path="res://Rescources/Structure/Tree/bare_tree.tres" id="18_nuekh"]
-[ext_resource type="Script" path="res://Scripts/Data/collision_data.gd" id="19_x0v2x"]
-[ext_resource type="Script" path="res://Scripts/Data/boulder_data.gd" id="20_susxw"]
-[ext_resource type="Texture2D" uid="uid://dxgkt7a0bdpcv" path="res://Rescources/Structure/Boulder/claystone1.tres" id="21_ffq73"]
-[ext_resource type="Texture2D" uid="uid://bp3teexb2grxh" path="res://Rescources/Structure/Boulder/limestone1.tres" id="22_2h4w1"]
 
 [sub_resource type="Resource" id="Resource_qal8d"]
 script = ExtResource("4_mtutp")
@@ -128,33 +124,6 @@ season = "Spring"
 struct_texture = ExtResource("18_nuekh")
 collision = ExtResource("3_qdda0")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v0i5c"]
-radius = 9.0
-
-[sub_resource type="Resource" id="Resource_b7oae"]
-script = ExtResource("19_x0v2x")
-collision_shape = SubResource("CircleShape2D_v0i5c")
-collision_transform = Vector2(0, 0)
-
-[sub_resource type="Resource" id="Resource_1sctt"]
-script = ExtResource("20_susxw")
-moss = false
-stone_type = 1
-struct_texture = ExtResource("21_ffq73")
-collision = SubResource("Resource_b7oae")
-
-[sub_resource type="Resource" id="Resource_e17bn"]
-script = ExtResource("19_x0v2x")
-collision_shape = SubResource("CircleShape2D_v0i5c")
-collision_transform = Vector2(0, 0)
-
-[sub_resource type="Resource" id="Resource_l3xdi"]
-script = ExtResource("20_susxw")
-moss = false
-stone_type = 0
-struct_texture = ExtResource("22_2h4w1")
-collision = SubResource("Resource_e17bn")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ip1rf"]
 size = Vector2(132.986, 92.3001)
 
@@ -176,7 +145,7 @@ layer_3/tile_data = PackedInt32Array(-262139, 2424832, 15, -327675, 2621440, 15,
 layer_4/name = "Roof"
 layer_4/tile_data = PackedInt32Array(-589826, 2228224, 22, -524290, 2228224, 22, -458754, 2228224, 22, -393218, 2228224, 22, -327682, 2228224, 22, -262146, 2359296, 24, -655361, 2424832, 23, -589825, 2228224, 268435478, -524289, 2228224, 268435478, -458753, 2228224, 268435478, -393217, 2228224, 268435478, -327681, 2228224, 268435478, -262145, 2424832, 24, -720896, 2228224, 22, -655360, 2228224, 22, -589824, 2228224, 22, -524288, 2228224, 22, -458752, 2228224, 22, -393216, 2359296, 24, -720895, 2228224, 268435478, -655359, 2228224, 268435478, -589823, 2228224, 268435478, -524287, 2228224, 268435478, -458751, 2228224, 268435478, -393215, 2424832, 24, -720894, 2293760, 268435478, -655358, 2293760, 268435478, -589822, 2293760, 268435478, -524286, 2293760, 268435478, -458750, 2293760, 268435478, -393214, 2359296, 22, -655357, 2293760, 22, -589821, 2293760, 22, -524285, 2293760, 22, -458749, 2293760, 22, -393213, 2424832, 22, -655356, 2293760, 268435478, -589820, 2293760, 268435478, -524284, 2293760, 268435478, -458748, 2293760, 268435478, -393212, 2293760, 268435478, -327676, 2359296, 22, -655362, 2359296, 23, -786432, 2359296, 23, -786431, 2424832, 23, -786430, 2359296, 21, -786429, 2424832, 21, -720893, 2293760, 22, -720892, 2359296, 21, -720891, 2424832, 21, -655355, 2293760, 22, -589819, 2293760, 22, -524283, 2293760, 22, -458747, 2293760, 22, -393211, 2293760, 22, -327675, 2424832, 22, -524271, 1835008, 14, -524270, 1900544, 14, -524269, 1900544, 14, -524268, 1900544, 14, -524267, 1900544, 14, -524266, 1966080, 14, -524263, 2031616, 14, -524262, 2097152, 14, -524261, 2097152, 14, -524260, 2097152, 14, -524259, 2097152, 14, -524258, 2162688, 14, -262143, 1835008, 7, -262142, 1900544, 7, -131049, 1835008, 7, -131048, 1900544, 7)
 script = ExtResource("2_budy5")
-tile_replacements = Array[Resource("res://Scripts/Data/structure_data.gd")]([SubResource("Resource_qal8d"), SubResource("Resource_hurqr"), SubResource("Resource_7exlm"), SubResource("Resource_f705t"), SubResource("Resource_bmnxk"), SubResource("Resource_xv3rp"), SubResource("Resource_0j2ql"), SubResource("Resource_8k60g"), SubResource("Resource_pcnxx"), SubResource("Resource_jcuuf"), SubResource("Resource_72pm4"), SubResource("Resource_ehwwr"), SubResource("Resource_isxf7"), SubResource("Resource_1sctt"), SubResource("Resource_l3xdi")])
+tile_replacements = Array[Resource("res://Scripts/Data/structure_data.gd")]([SubResource("Resource_qal8d"), SubResource("Resource_hurqr"), SubResource("Resource_7exlm"), SubResource("Resource_f705t"), SubResource("Resource_bmnxk"), SubResource("Resource_xv3rp"), SubResource("Resource_0j2ql"), SubResource("Resource_8k60g"), SubResource("Resource_pcnxx"), SubResource("Resource_jcuuf"), SubResource("Resource_72pm4"), SubResource("Resource_ehwwr"), SubResource("Resource_isxf7")])
 
 [node name="FadeArea" parent="." instance=ExtResource("3_gakfv")]
 position = Vector2(30, -49)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CollisionData" load_steps=3 format=3 uid="uid://cangt2as3opxn"]
+
+[ext_resource type="Script" path="res://Scripts/Data/collision_data.gd" id="1_dr5rw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5n3q"]
+radius = 8.0
+
+[resource]
+script = ExtResource("1_dr5rw")
+collision_shape = SubResource("CircleShape2D_k5n3q")
+collision_transform = Vector2(0, 0)

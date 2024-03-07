@@ -33,6 +33,14 @@ func on_inventory_interact(inventory_data: InventoryData, index: int, button: in
 			
 	update_grabbed_slot()
 
+func on_container_update(items: InventoryData):
+	if items:
+		container.show()
+		container.populate_item_grid(items)
+	else:
+		container.clear_grid()
+		container.hide()
+
 func update_grabbed_slot() -> void:
 	if grabbed_slot_data:
 		grabbed_slot.show()
