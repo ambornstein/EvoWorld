@@ -9,7 +9,7 @@ signal hurt
 func take_damage(value: int): 
 	health -= value
 	clamp(health, 0, max_health)
-	emit_signal("hurt")
+	hurt.emit()
 	print("%s: %d/%d" % [owner.name, health, max_health])
 	
 # Called when the node enters the scene tree for the first time.

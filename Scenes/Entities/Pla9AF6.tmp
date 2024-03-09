@@ -6,95 +6,26 @@
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HitBox.gd" id="3_ud32m"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_27l3h"]
 
-[sub_resource type="Animation" id="Animation_n0y8g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Character:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Weapon/HitBox:monitorable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_amx0k"]
+atlas = ExtResource("2_rgfdt")
+region = Rect2(17, 153, 16, 16)
 
-[sub_resource type="Animation" id="Animation_odbto"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 0), Vector2(-10, -5), Vector2(-6, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.488757, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/HitBox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]
+atlas = ExtResource("2_rgfdt")
+region = Rect2(714, 0, 16, 16)
+margin = Rect2(-1, 0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5n65"]
+size = Vector2(6.58684, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi2x7"]
+size = Vector2(16, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju3wd"]
+size = Vector2(16, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pehn5"]
+radius = 28.75
 
 [sub_resource type="Animation" id="Animation_jbu2s"]
 resource_name = "hurt"
@@ -105,38 +36,60 @@ tracks/0/path = NodePath("Character:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1.51572, 1),
+"times": PackedFloat32Array(0.1, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_om7jm"]
-_data = {
-"RESET": SubResource("Animation_n0y8g"),
-"attack": SubResource("Animation_odbto"),
-"hurt": SubResource("Animation_jbu2s")
+[sub_resource type="Animation" id="Animation_odbto"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.593412, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0680678, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_amx0k"]
-atlas = ExtResource("2_rgfdt")
-region = Rect2(17, 153, 16, 16)
+[sub_resource type="Animation" id="Animation_6cila"]
+resource_name = "reset"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]
-atlas = ExtResource("2_rgfdt")
-region = Rect2(715, 1, 16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5n65"]
-size = Vector2(5.97807, 17.8522)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wi2x7"]
-size = Vector2(16, 13)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ihhjg"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pehn5"]
-radius = 28.75
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_om7jm"]
+_data = {
+"attack": SubResource("Animation_odbto"),
+"hurt": SubResource("Animation_jbu2s"),
+"reset": SubResource("Animation_6cila")
+}
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 z_index = 1
@@ -146,27 +99,17 @@ script = ExtResource("1_4c4uh")
 health = NodePath("HealthComponent")
 speed = 50
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_om7jm")
-}
-
 [node name="Character" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_amx0k")
 
 [node name="Weapon" type="Sprite2D" parent="."]
-position = Vector2(-6, 0)
 texture = SubResource("AtlasTexture_5oexm")
-offset = Vector2(6, 0)
 
 [node name="HitBox" type="Area2D" parent="Weapon"]
-collision_layer = 4
-collision_mask = 0
-monitorable = false
 script = ExtResource("3_ud32m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/HitBox"]
-position = Vector2(-0.5, -6)
+position = Vector2(-6.75459, -6)
 scale = Vector2(0.83639, 0.294071)
 shape = SubResource("RectangleShape2D_k5n65")
 
@@ -176,14 +119,15 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_wi2x7")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_36vi1")
 health_bar = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_ihhjg")
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ju3wd")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_27l3h")
@@ -195,6 +139,11 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
 shape = SubResource("CircleShape2D_pehn5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_om7jm")
+}
 
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
 [connection signal="area_entered" from="Reach" to="." method="_on_reach_area_entered"]

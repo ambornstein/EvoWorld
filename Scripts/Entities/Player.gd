@@ -6,17 +6,21 @@ var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 @export var health: HealthComponent
 @export var speed = 400  # speed in pixels/sec
 
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $Character
 @onready var interact_radius = $Reach
 @onready var inventory_ui = $Camera2D/InventoryUI
+
+@onready var animation = $AnimationPlayer
 
 var reachable_resource
 var harvestable
 
 func _ready():
-	health.connect("hurt", _damaged_animation)
+	health.hurt.connect(_damaged_animation)
 
 func _process(delta):
+	if Input.is_action_just_pressed("click"):
+		attack(get_global_mouse_position()-global_position)
 	if get_closest_harvestable():
 		harvestable = get_closest_harvestable().get_parent()
 	#if Input.is_action_just_pressed("click"):
@@ -46,6 +50,19 @@ func _shoot(direction: Vector2):
 	var fire = Fireball.instantiate()
 	add_child(fire)
 	fire.fire(direction)
+
+func attack(point: Vector2):
+	var anim = animation.get_animation("attack") as Animation
+	#print(anim.track_get_key_value(1, 1))
+
+	var attack_direction = Vector2.UP.angle_to(point)
+	var vec_shift = sprite.position.move_toward(point, 20)
+	anim.track_set_key_value(0, 1, vec_shift)
+	anim.track_set_key_value(1, 1, attack_direction)
+	
+	#$Weapon.rotation_degrees = rad_to_deg(position.angle_to(direction))
+	if animation.current_animation != "attack":
+		animation.queue("attack")
 	
 func get_closest_harvestable() -> Area2D:
 	var areas = interact_radius.get_overlapping_areas()
@@ -59,9 +76,10 @@ func get_closest_harvestable() -> Area2D:
 ###signals
 	
 func _damaged_animation():
-	sprite.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color.WHITE
+	if animation.is_playing():
+		animation.queue("hurt")
+	else:
+		animation.queue("hurt")
 
 func _on_reach_body_entered(body):
 	if body.name == "Chest":
