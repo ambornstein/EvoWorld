@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b800c4m6h3okp"]
 
 [ext_resource type="Script" path="res://Scripts/Structures/Tree.gd" id="1_5s480"]
-[ext_resource type="Texture2D" uid="uid://bta8i32tcjj80" path="res://Rescources/Structure/Bush/bush_winter.tres" id="3_akg47"]
+[ext_resource type="Texture2D" uid="uid://bta8i32tcjj80" path="res://Resources/Structure/Bush/bush_winter.tres" id="3_akg47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtb1k"]
 radius = 8.0

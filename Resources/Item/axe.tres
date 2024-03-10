@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cn1rdqn3lujtm"]
+
+[ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_krfvb"]
+[ext_resource type="Texture2D" uid="uid://b8i3ckhwptvjn" path="res://Tiles/axe.png" id="2_hko87"]
+
+[resource]
+script = ExtResource("1_krfvb")
+damage = 10
+weapon_class = 0
+harvest_type = null
+name = "Axe"
+description = "A tool for chopping wood"
+stackable = false
+texture = ExtResource("2_hko87")
+equip_type = 1

@@ -5,6 +5,18 @@ signal inventory_updated(inventory_data: InventoryData)
 signal inventory_interact(inventory_data: InventoryData, index: int, button: int)
 
 @export var slot_array: Array[SlotData]
+@export_enum("Equipment") var slot_restriction
+
+enum EquipmentType {
+	HELMET,
+	WEAPON,
+	CHEST,
+	SHIELD,
+	LEG,
+	LEFT_RING,
+	BOOT,
+	RIGHT_RING
+}
 
 func on_slot_clicked(index: int, button: int):
 	print("%s %s" % [index, button])
@@ -31,3 +43,14 @@ func drop_slot_data(grabbed_slot_data: SlotData, index: int):
 		
 	inventory_updated.emit(self)
 	return return_slot_data
+
+func can_accept(grabbed_slot_data: SlotData, index: int):
+	match[slot_restriction]:
+		[null]:
+			return true
+		[0]:
+			print(grabbed_slot_data.item_data.equip_type)
+			if grabbed_slot_data.item_data.equip_type == index:
+				return true
+			else:
+				return false

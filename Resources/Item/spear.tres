@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3 uid="uid://141qwwc0nm1p"]
+
+[ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_gg8vq"]
+
+[resource]
+script = ExtResource("1_gg8vq")
+damage = 10
+weapon_class = 6
+harvest_type = 0
+name = ""
+description = ""
+stackable = false
+equip_type = 1

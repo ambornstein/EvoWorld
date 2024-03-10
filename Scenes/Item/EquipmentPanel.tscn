@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcyppwwqo2xy3"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Inventory/Inventory.gd" id="1_1alrr"]
+[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/Item/Slot.tscn" id="1_kxslc"]
+[ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="3_gpyxr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdtig"]
+atlas = ExtResource("3_gpyxr")
+region = Rect2(477, 0, 16, 16)
+margin = Rect2(0, 4, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhciw"]
+texture = SubResource("AtlasTexture_gdtig")
+modulate_color = Color(1, 1, 1, 0.392157)
+
+[node name="ItemGrid" type="GridContainer"]
+offset_right = 148.0
+offset_bottom = 286.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 2
+script = ExtResource("1_1alrr")
+
+[node name="HelmetSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xhciw")
+
+[node name="WeaponSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="ChestSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="ShieldSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="LegSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="LeftRingSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="BootSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2
+
+[node name="RightRingSlot" parent="." instance=ExtResource("1_kxslc")]
+layout_mode = 2

@@ -8,7 +8,7 @@ var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 
 @onready var sprite = $Character
 @onready var interact_radius = $Reach
-@onready var inventory_ui = $Camera2D/InventoryUI
+@onready var inventory_ui = $Camera2D/InventoryGUI
 
 @onready var animation = $AnimationPlayer
 
@@ -19,7 +19,7 @@ func _ready():
 	health.hurt.connect(_damaged_animation)
 
 func _process(delta):
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and not inventory_ui.visible:
 		attack(get_global_mouse_position()-global_position)
 	if get_closest_harvestable():
 		harvestable = get_closest_harvestable().get_parent()

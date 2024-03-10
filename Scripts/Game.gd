@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var inventory_ui = $Player/Camera2D/InventoryUI
+@onready var inventory_ui = $Player/Camera2D/InventoryGUI
 @onready var player = $Player
 
 func toggle_inventory_interface():

@@ -23,10 +23,10 @@ func _ready():
 		set_tree_data(structure_data)
 
 func exhaust():
-	var col = preload("res://Rescources/Structure/Collisions/bush_collision.tres")
+	var col = preload("res://Resources/Structure/Collisions/bush_collision.tres")
 	structure_data.chopped = true
 	collision.transform.origin = col.collision_transform
-	icon.texture = preload("res://Rescources/Structure/Tree/stump1.tres")
+	icon.texture = preload("res://Resources/Structure/Tree/stump1.tres")
 
 func harvest():
 	size -= 1
