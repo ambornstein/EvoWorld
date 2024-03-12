@@ -1,16 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6gheqrx4n5q8"]
+[gd_scene load_steps=6 format=3 uid="uid://6gheqrx4n5q8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Inventory/inventory_gui.gd" id="1_dvlj7"]
 [ext_resource type="PackedScene" uid="uid://b4bkhoptxm3dl" path="res://Scenes/Item/ContainerItems.tscn" id="2_8lymp"]
 [ext_resource type="PackedScene" uid="uid://firlsebipob2" path="res://Scenes/Item/PlayerItems.tscn" id="3_f2mla"]
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="3_nkvln"]
 [ext_resource type="PackedScene" uid="uid://dcyppwwqo2xy3" path="res://Scenes/Item/EquipmentPanel.tscn" id="3_o0v2b"]
 [ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/Item/Slot.tscn" id="5_b1sax"]
-
-[sub_resource type="Resource" id="Resource_o0ppg"]
-script = ExtResource("3_nkvln")
-slot_array = Array[Resource("res://Scripts/Data/slot_data.gd")]([null, null, null, null, null, null, null, null])
-slot_restriction = 0
 
 [node name="InventoryGUI" type="Control"]
 layout_mode = 3
@@ -36,7 +30,6 @@ theme_override_constants/margin_bottom = 10
 
 [node name="EquipmentGrid" parent="PlayerInventory/HFlowContainer/EquipmentPanel" instance=ExtResource("3_o0v2b")]
 layout_mode = 2
-inv_data = SubResource("Resource_o0ppg")
 
 [node name="ItemPanel" type="MarginContainer" parent="PlayerInventory/HFlowContainer"]
 layout_mode = 2

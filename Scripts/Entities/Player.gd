@@ -1,8 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 
 @export var inventory: InventoryData
+@export var equipment: InventoryData
 @export var health: HealthComponent
 @export var speed = 400  # speed in pixels/sec
 
@@ -12,11 +14,16 @@ var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 
 @onready var animation = $AnimationPlayer
 
+@onready var helmet_sprite = $Helmet
+@onready var chestplate_sprite = $Chestplate
+
 var reachable_resource
 var harvestable
 
 func _ready():
 	health.hurt.connect(_damaged_animation)
+	
+	equipment.inventory_updated.connect(equip_armaments)
 
 func _process(delta):
 	if Input.is_action_just_pressed("click") and not inventory_ui.visible:
@@ -81,9 +88,21 @@ func _damaged_animation():
 	else:
 		animation.queue("hurt")
 
+func equip_armaments(inv: InventoryData):
+	print("changing textures")
+	for i in 8:
+		var equip_slot = inv.get_slot_data(i) 
+		match i:
+			equipment.EquipmentType.HELMET:
+				if equip_slot:
+					helmet_sprite.texture = equip_slot.item_data.texture
+				else:
+					helmet_sprite.texture = null
+
 func _on_reach_body_entered(body):
 	if body.name == "Chest":
 		inventory_ui.on_container_update(body.inventory)
+		inventory_ui.set_container_inventory_data(body.inventory)
 		reachable_resource = body
 	elif body is Forest or body is Boulder:
 		harvestable = body

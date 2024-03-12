@@ -1,4 +1,5 @@
 extends Control
+class_name InventoryGUI
 
 @onready var inventory = $PlayerInventory/HFlowContainer/ItemPanel/ItemGrid
 @onready var equipment = $PlayerInventory/HFlowContainer/EquipmentPanel/EquipmentGrid
@@ -7,13 +8,8 @@ extends Control
 
 var grabbed_slot_data: SlotData = null
 
-func _ready():
-	set_player_inventory_data(inventory.inv_data, equipment.inv_data)
-	set_container_inventory_data(container.inv_data)
-
 func _physics_process(delta):
-	if grabbed_slot.visible:
-		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5)
+	grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5)
 
 func set_container_inventory_data(container_data: InventoryData):
 	container_data.inventory_interact.connect(on_inventory_interact)
@@ -41,7 +37,6 @@ func on_inventory_interact(inventory_data: InventoryData, index: int, button: in
 func on_container_update(items: InventoryData):
 	if items:
 		container.show()
-		container.populate_item_grid(items)
 	else:
 		container.clear_grid()
 		container.hide()

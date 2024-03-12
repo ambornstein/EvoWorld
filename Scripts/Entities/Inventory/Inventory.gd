@@ -3,15 +3,10 @@ class_name Inventory
 
 const Slot = preload("res://Scenes/Item/Slot.tscn")
 
-@export var inv_data: InventoryData
-
-func _ready():
-	if inv_data:
-		populate_item_grid(inv_data)
-
-func set_inventory_data(inv: InventoryData):
+func set_inventory_data(inv_data: InventoryData):
+	print("setting")
 	inv_data.inventory_updated.connect(populate_item_grid)
-	populate_item_grid(inv)
+	populate_item_grid(inv_data)
 
 func populate_item_grid(inv: InventoryData):
 	clear_grid()

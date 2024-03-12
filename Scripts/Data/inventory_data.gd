@@ -31,6 +31,9 @@ func grab_slot_data(index: int):
 	else:
 		return null
 		
+func get_slot_data(index: int):
+	return slot_array[index]
+
 func drop_slot_data(grabbed_slot_data: SlotData, index: int):
 	var slot_data = slot_array[index]
 	
