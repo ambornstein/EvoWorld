@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b800c4m6h3okp"]
+[gd_scene load_steps=7 format=3 uid="uid://b800c4m6h3okp"]
 
 [ext_resource type="Script" path="res://Scripts/Structures/Tree.gd" id="1_5s480"]
-[ext_resource type="Texture2D" uid="uid://bta8i32tcjj80" path="res://Resources/Structure/Bush/bush_winter.tres" id="3_akg47"]
+[ext_resource type="Texture2D" uid="uid://dho3h2dxcknke" path="res://Resources/Structure/Tree/pine_winter.tres" id="2_pmg5m"]
+[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_j0swy"]
+[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_x47bi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dtb1k"]
 radius = 8.0
@@ -9,16 +11,19 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jluv2"]
 radius = 32.0
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("collision", "icon")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("collision", "icon", "health")]
+collision_layer = 17
 collision_mask = 0
 script = ExtResource("1_5s480")
 collision = NodePath("Collision")
 icon = NodePath("Icon")
+health = NodePath("HealthComponent")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("3_akg47")
+texture = ExtResource("2_pmg5m")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_dtb1k")
 
 [node name="HarvestRange" type="Area2D" parent="."]
@@ -27,3 +32,18 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestRange"]
 visible = false
 shape = SubResource("CircleShape2D_jluv2")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_j0swy")
+health_bar = NodePath("../HealthComponent")
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_dtb1k")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_x47bi")
+
+[connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
+[connection signal="hurt" from="HealthComponent" to="HurtBox" method="_on_health_component_hurt"]

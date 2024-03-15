@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c87dovsr3h0lu"]
+[gd_scene load_steps=7 format=3 uid="uid://c87dovsr3h0lu"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_fgeks"]
 [ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Entities/Enemy.tscn" id="3_l0cty"]
 [ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
 [ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
 [ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
-[ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Resources/Inventory/test_inv.tres" id="5_rxidj"]
 [ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/Item/InventoryGUI.tscn" id="6_gyqxb"]
 
 [node name="Game" type="Node2D"]
@@ -33,7 +32,6 @@ position = Vector2(0, -137)
 z_index = 0
 position = Vector2(-52, -66)
 motion_mode = 0
-inventory = ExtResource("5_rxidj")
 speed = 200
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

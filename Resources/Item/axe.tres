@@ -7,7 +7,7 @@
 script = ExtResource("1_krfvb")
 damage = 10
 weapon_class = 0
-harvest_type = null
+harvest_type = 5
 name = "Axe"
 description = "A tool for chopping wood"
 stackable = false

@@ -22,7 +22,7 @@ var target_displacement: Vector2
 var target_position: Vector2
 
 func _ready():
-	health.connect("hurt", _damaged_animation)
+	health.hurt.connect(_damaged_animation)
 	
 func _process(delta):
 	target_displacement = target_position - global_position

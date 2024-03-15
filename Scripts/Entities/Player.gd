@@ -16,38 +16,31 @@ var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 
 @onready var helmet_sprite = $Helmet
 @onready var chestplate_sprite = $Chestplate
+@onready var weapon = $Weapon
 
 var reachable_resource
-var harvestable
 
 func _ready():
-	health.hurt.connect(_damaged_animation)
+	health.hurt.connect(animation.play.bind("hurt"))
 	
 	equipment.inventory_updated.connect(equip_armaments)
 
 func _process(delta):
+	var rel_mouse_point = get_global_mouse_position()-weapon.global_position
+	var attack_direction = Vector2.UP.angle_to(rel_mouse_point)
+	weapon.rotation = attack_direction
+	#weapon.position = sprite.position.move_toward(rel_mouse_point, 10)
 	if Input.is_action_just_pressed("click") and not inventory_ui.visible:
-		attack(get_global_mouse_position()-global_position)
-	if get_closest_harvestable():
-		harvestable = get_closest_harvestable().get_parent()
+		attack(rel_mouse_point)
 	#if Input.is_action_just_pressed("click"):
 		#print(get_global_mouse_position())
 		#var vec = position.direction_to(get_global_mouse_position())
 		#_shoot(vec)
 	if Input.is_action_just_pressed("interact"):
-		if harvestable:
-			harvestable.harvest()
-			if harvestable.size == 1 and harvestable.has_method("exhaust"):
-				harvestable.exhaust()
 		if reachable_resource:
 			reachable_resource.open()
 			inventory_ui.show()
-	#if Input.is_action_just_pressed("space"):
-		##print(get_closest_harvestable())
-		#if get_closest_harvestable():
-			#var harvestable: Structure = get_closest_harvestable().get_parent()
-			#harvestable.harvest()
-
+			
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -63,22 +56,15 @@ func attack(point: Vector2):
 	#print(anim.track_get_key_value(1, 1))
 
 	var attack_direction = Vector2.UP.angle_to(point)
-	var vec_shift = sprite.position.move_toward(point, 20)
+	var vec_shift = weapon.position.move_toward(point, 10)
+	print(vec_shift)
+	
 	anim.track_set_key_value(0, 1, vec_shift)
 	anim.track_set_key_value(1, 1, attack_direction)
 	
 	#$Weapon.rotation_degrees = rad_to_deg(position.angle_to(direction))
 	if animation.current_animation != "attack":
 		animation.queue("attack")
-	
-func get_closest_harvestable() -> Area2D:
-	var areas = interact_radius.get_overlapping_areas()
-	var closest
-	for a in areas:
-		if a.name == "HarvestRange":
-			if closest == null or global_position.distance_to(a.global_position) < global_position.distance_to(closest.global_position):
-				closest = a
-	return closest
 
 ###signals
 	
@@ -104,13 +90,9 @@ func _on_reach_body_entered(body):
 		inventory_ui.on_container_update(body.inventory)
 		inventory_ui.set_container_inventory_data(body.inventory)
 		reachable_resource = body
-	elif body is Forest or body is Boulder:
-		harvestable = body
 
 func _on_reach_body_exited(body):
 	if reachable_resource == body:
 		body.close()
 		inventory_ui.on_container_update(null)
 		reachable_resource = null
-	elif harvestable == body:
-		harvestable = null
