@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvpj3dra8smu2"]
+[gd_scene load_steps=18 format=3 uid="uid://bvpj3dra8smu2"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1_4c4uh"]
 [ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="2_enjcn"]
 [ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Resources/Inventory/test_inv.tres" id="2_jr7sg"]
 [ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_rgfdt"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_36vi1"]
-[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HitBox.gd" id="3_ud32m"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_27l3h"]
 
 [sub_resource type="Resource" id="Resource_2iq3r"]
@@ -80,7 +79,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -129,9 +128,22 @@ _data = {
 atlas = ExtResource("2_rgfdt")
 region = Rect2(17, 153, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]
-atlas = ExtResource("2_rgfdt")
-region = Rect2(715, 1, 16, 16)
+[sub_resource type="GDScript" id="GDScript_hkrd6"]
+script/source = "extends Area2D
+class_name HitBox
+#Settings to deal damage to layer 2
+#func _init():
+	#collision_layer = 2
+	#collision_mask = 0
+	
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5n65"]
 size = Vector2(5.97807, 17.8522)
@@ -170,14 +182,13 @@ offset = Vector2(0, -1)
 
 [node name="Weapon" type="Sprite2D" parent="."]
 position = Vector2(-6, 2)
-texture = SubResource("AtlasTexture_5oexm")
 offset = Vector2(6, -3)
 
 [node name="HitBox" type="Area2D" parent="Weapon"]
 collision_layer = 4
 collision_mask = 0
 monitorable = false
-script = ExtResource("3_ud32m")
+script = SubResource("GDScript_hkrd6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/HitBox"]
 position = Vector2(-0.5, -10)

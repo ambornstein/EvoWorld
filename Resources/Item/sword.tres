@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://dp4k7f0fjx3ae"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dp4k7f0fjx3ae"]
 
 [ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_kylxi"]
-[ext_resource type="Texture2D" uid="uid://bt7fodactlan7" path="res://Tiles/sword.png" id="2_oj08b"]
+[ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_uxjr7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]
+atlas = ExtResource("2_uxjr7")
+region = Rect2(749, 101, 16, 16)
 
 [resource]
 script = ExtResource("1_kylxi")
-damage = 0
+damage = 10
+strike_range = 7.5
 weapon_class = 2
 harvest_type = null
 name = ""
 description = ""
 stackable = false
-texture = ExtResource("2_oj08b")
+texture = SubResource("AtlasTexture_5oexm")
 equip_type = 1

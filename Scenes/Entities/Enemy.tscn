@@ -1,9 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://bt0vhkk770jy4"]
+[gd_scene load_steps=32 format=3 uid="uid://bt0vhkk770jy4"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy.gd" id="1_f3n8p"]
 [ext_resource type="Texture2D" uid="uid://snnu3p16j2q1" path="res://Tiles/Village/medieval_tilesheet.png" id="2_77nsx"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_lhlu2"]
-[ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HitBox.gd" id="4_u1uu3"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="5_ufpkm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyeun"]
@@ -223,7 +222,6 @@ shape = SubResource("RectangleShape2D_78s8c")
 visible = false
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("4_u1uu3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -1)
