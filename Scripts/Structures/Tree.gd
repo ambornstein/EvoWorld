@@ -2,38 +2,34 @@ extends StaticBody2D
 class_name Forest
 
 @export var structure_data: TreeData
-@export var collision: CollisionShape2D
-@export var icon: Sprite2D
-@export var health: HealthComponent
+
+@onready var hurt_box = $HurtBox
 
 @export var MAX_YIELD: int = 7
 @export var size: int = 1
 
 func set_tree_data(tree_data: TreeData):
 	structure_data = tree_data
-	
+	$Icon.texture = structure_data.struct_texture
 	replace_shape()
-	icon.texture = structure_data.struct_texture
 
 func replace_shape():
-	collision.shape = structure_data.collision.collision_shape
-	collision.transform.origin = structure_data.collision.collision_transform
+	$Collision.shape = structure_data.collision.collision_shape
+	$HurtBox.set_collision(structure_data.collision)
 	
 func _ready():
-	health.hurt.connect(_damaged_animation)
-	if structure_data:
-		set_tree_data(structure_data)
+	hurt_box.health_bar.hurt.connect(_damaged_animation)
 
 func exhaust():
 	var col = preload("res://Resources/Structure/Collisions/bush_collision.tres")
 	structure_data.chopped = true
-	collision.transform.origin = col.collision_transform
-	icon.texture = preload("res://Resources/Structure/Tree/stump1.tres")
+	$Collision.transform.origin = col.collision_transform
+	$Icon.texture = preload("res://Resources/Structure/Tree/stump1.tres")
 
 func _damaged_animation():
-	icon.modulate = Color.RED
+	$Icon.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
-	icon.modulate = Color.WHITE
+	$Icon.modulate = Color.WHITE
 
 func harvest():
 	size -= 1

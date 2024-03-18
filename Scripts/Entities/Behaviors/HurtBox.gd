@@ -10,3 +10,7 @@ class_name HurtBox
 	
 func _on_area_entered(hitbox:Area2D):
 	health_bar.take_damage(5)
+
+func set_collision(collision_params: CollisionData):
+	$Collision.shape = collision_params.collision_shape
+	$Collision.position = collision_params.collision_transform
