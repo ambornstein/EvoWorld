@@ -1,15 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvpj3dra8smu2"]
+[gd_scene load_steps=23 format=3 uid="uid://bvpj3dra8smu2"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1_4c4uh"]
 [ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="2_enjcn"]
 [ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Resources/Inventory/test_inv.tres" id="2_jr7sg"]
 [ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_rgfdt"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_36vi1"]
+[ext_resource type="Resource" uid="uid://cn1rdqn3lujtm" path="res://Resources/Item/axe.tres" id="4_7x15c"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_27l3h"]
+[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="5_57sht"]
+[ext_resource type="Texture2D" uid="uid://irqiivjokfxg" path="res://Resources/Item/sprites/spear_sprite.tres" id="7_nialy"]
+
+[sub_resource type="Resource" id="Resource_d5f8u"]
+script = ExtResource("5_57sht")
+item_data = ExtResource("4_7x15c")
+quantity = 1
 
 [sub_resource type="Resource" id="Resource_2iq3r"]
 script = ExtResource("2_enjcn")
-slot_array = Array[Resource("res://Scripts/Data/slot_data.gd")]([null, null, null, null, null, null, null, null])
+slot_array = Array[ExtResource("5_57sht")]([null, SubResource("Resource_d5f8u"), null, null, null, null, null, null])
 slot_restriction = 0
 
 [sub_resource type="Animation" id="Animation_n0y8g"]
@@ -29,77 +37,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon/HitBox:monitorable")
+tracks/1/path = NodePath("Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-6, 2)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Character:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_odbto"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 2), Vector2(-10, -8), Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5865, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/HitBox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_jbu2s"]
@@ -117,11 +74,66 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_u48ai"]
+resource_name = "slash_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, 2), Vector2(-6, -6), Vector2(-6, -6), Vector2(-6, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.785398, 0.785398, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_odbto"]
+resource_name = "stab_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, 2), Vector2(-6, 2), Vector2(-6, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_om7jm"]
 _data = {
 "RESET": SubResource("Animation_n0y8g"),
-"attack": SubResource("Animation_odbto"),
-"hurt": SubResource("Animation_jbu2s")
+"hurt": SubResource("Animation_jbu2s"),
+"slash_attack": SubResource("Animation_u48ai"),
+"stab_attack": SubResource("Animation_odbto")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amx0k"]
@@ -146,7 +158,7 @@ func _process(delta):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5n65"]
-size = Vector2(5.97807, 17.8522)
+size = Vector2(5.97807, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi2x7"]
 size = Vector2(16, 13)
@@ -182,6 +194,7 @@ offset = Vector2(0, -1)
 
 [node name="Weapon" type="Sprite2D" parent="."]
 position = Vector2(-6, 2)
+texture = ExtResource("7_nialy")
 offset = Vector2(6, -3)
 
 [node name="HitBox" type="Area2D" parent="Weapon"]
@@ -191,8 +204,7 @@ monitorable = false
 script = SubResource("GDScript_hkrd6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/HitBox"]
-position = Vector2(-0.5, -10)
-scale = Vector2(0.83639, 0.294071)
+position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_k5n65")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -222,6 +234,7 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
 shape = SubResource("CircleShape2D_pehn5")
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
 [connection signal="area_entered" from="Reach" to="." method="_on_reach_area_entered"]
 [connection signal="area_exited" from="Reach" to="." method="_on_reach_area_exited"]

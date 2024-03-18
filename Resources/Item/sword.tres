@@ -5,13 +5,13 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]
 atlas = ExtResource("2_uxjr7")
-region = Rect2(749, 101, 16, 16)
+region = Rect2(749, 103, 16, 16)
 
 [resource]
 script = ExtResource("1_kylxi")
 damage = 10
 strike_range = 7.5
-weapon_class = 2
+weapon_class = "Sword"
 harvest_type = null
 name = ""
 description = ""

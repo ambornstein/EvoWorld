@@ -1,20 +1,16 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://141qwwc0nm1p"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://141qwwc0nm1p"]
 
 [ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_gg8vq"]
-[ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_t8q1a"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7dtre"]
-atlas = ExtResource("2_t8q1a")
-region = Rect2(834, 35, 16, 16)
+[ext_resource type="Texture2D" uid="uid://irqiivjokfxg" path="res://Resources/Item/sprites/spear_sprite.tres" id="2_ihhjq"]
 
 [resource]
 script = ExtResource("1_gg8vq")
 damage = 10
 strike_range = 20.5
-weapon_class = 6
+weapon_class = "Spear"
 harvest_type = 0
 name = "Spear"
 description = ""
 stackable = false
-texture = SubResource("AtlasTexture_7dtre")
+texture = ExtResource("2_ihhjq")
 equip_type = 1
