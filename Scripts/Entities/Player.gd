@@ -27,16 +27,25 @@ var slash_half_arc: float = 0.35
 
 func _input(event):
 	var attack_direction = Vector2.UP.angle_to(get_global_mouse_position()-weapon.global_position)
-	if event is InputEventMouseMotion && event.relative.length() > 50:
+	if event is InputEventMouseMotion and not animation.is_playing() and event.relative.length() > 10:
 		if equipped_weapon:
 			if attack_direction < 0:
-				weapon.position = Vector2(-6, 2)
+				set_weapon_starting_pos(Vector2(-6, 2))
 				if equipped_weapon.weapon_class == "Axe":
 					weapon.scale.x = -1
 			else:
-				weapon.position = Vector2(7, 2)
+				set_weapon_starting_pos(Vector2(7, 2))
 				if equipped_weapon.weapon_class == "Axe":
 					weapon.scale.x = 1
+
+
+func set_weapon_starting_pos(pos: Vector2):
+	weapon.position = pos
+	animation.get_animation("RESET").track_set_key_value(0,0, pos)
+	slash_attack.track_set_key_value(0,0,pos)
+	slash_attack.track_set_key_value(0,3,pos)
+	stab_attack.track_set_key_value(0,0,pos)
+	stab_attack.track_set_key_value(0,2,pos)
 
 func _ready():
 	equip_armaments(equipment)
