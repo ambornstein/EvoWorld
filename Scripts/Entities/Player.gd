@@ -81,6 +81,7 @@ func update_animation_position(point):
 	stab_attack.track_set_key_value(1, 2, attack_direction)
 
 func _process(delta):
+	#print($Weapon/HitBox.monitorable)
 	var rel_mouse_point = get_global_mouse_position()-weapon.global_position
 	var attack_direction = Vector2.UP.angle_to(rel_mouse_point)
 	
@@ -123,7 +124,7 @@ func attack(point: Vector2):
 	#$Weapon.rotation_degrees = rad_to_deg(position.angle_to(direction))
 	if equipped_weapon:
 		if equipped_weapon.weapon_class in ["Axe", "Sword", "Mace", "Flail"]:
-			slash_half_arc = 0.80
+			slash_half_arc = 1
 			update_animation_position(point)
 			animation.queue("slash_attack")
 		elif equipped_weapon.weapon_class in ["Spear", "Dagger", "Staff"]:

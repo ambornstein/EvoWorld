@@ -10,6 +10,9 @@ class_name HurtBox
 	
 func _on_area_entered(hitbox:Area2D):
 	health_bar.take_damage(5)
+	set_deferred("monitoring",false)
+	await get_tree().create_timer(1).timeout
+	set_deferred("monitoring",true)
 
 func set_collision(collision_params: CollisionData):
 	$Collision.shape = collision_params.collision_shape
