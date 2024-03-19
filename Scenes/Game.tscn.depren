@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_fgeks"]
 [ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Entities/Enemy.tscn" id="3_l0cty"]
 [ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
-[ext_resource type="PackedScene" uid="uid://cvk64esavlwss" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Human.tscn" id="4_jccrf"]
 [ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
 [ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/Item/InventoryGUI.tscn" id="6_gyqxb"]
 
@@ -28,11 +28,11 @@ layer_4/tile_data = PackedInt32Array(-589826, 2228224, 22, -524290, 2228224, 22,
 z_index = 1
 position = Vector2(0, -137)
 
-[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
-position = Vector2(162, -31)
-
 [node name="Player" parent="." instance=ExtResource("4_jccrf")]
-position = Vector2(30, -6)
+z_index = 0
+position = Vector2(-52, -66)
+motion_mode = 0
+speed = 200
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -40,9 +40,11 @@ limit_smoothed = true
 
 [node name="InventoryGUI" parent="Player/Camera2D" instance=ExtResource("6_gyqxb")]
 z_index = 3
-offset_left = -199.0
-offset_top = -106.0
-offset_right = 443.0
-offset_bottom = 274.0
+offset_left = -224.0
+offset_top = -120.0
+offset_right = 418.0
+offset_bottom = 260.0
 scale = Vector2(0.6, 0.6)
-metadata/_edit_use_anchors_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
+position = Vector2(162, -31)

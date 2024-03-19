@@ -32,17 +32,17 @@ position = Vector2(0, -137)
 position = Vector2(162, -31)
 
 [node name="Player" parent="." instance=ExtResource("4_jccrf")]
-position = Vector2(30, -6)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-52, -66)
 zoom = Vector2(2, 2)
 limit_smoothed = true
 
 [node name="InventoryGUI" parent="Player/Camera2D" instance=ExtResource("6_gyqxb")]
 z_index = 3
-offset_left = -199.0
-offset_top = -106.0
-offset_right = 443.0
-offset_bottom = 274.0
+offset_left = -224.0
+offset_top = -120.0
+offset_right = 418.0
+offset_bottom = 260.0
 scale = Vector2(0.6, 0.6)
 metadata/_edit_use_anchors_ = true

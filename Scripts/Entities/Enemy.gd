@@ -20,9 +20,6 @@ var state = IDLE
 var follow_target
 var target_displacement: Vector2
 var target_position: Vector2
-
-func _ready():
-	health.hurt.connect(_damaged_animation)
 	
 func _process(delta):
 	target_displacement = target_position - global_position
@@ -44,11 +41,6 @@ func _physics_process(delta):
 					velocity = Vector2(0,0)
 					state = IDLE
 	move_and_slide()
-
-func _damaged_animation():
-	sprite.modulate = Color.RED
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color.WHITE
 
 func random_target_position():
 	var rng = RandomNumberGenerator.new()
