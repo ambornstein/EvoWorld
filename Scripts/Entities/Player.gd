@@ -9,15 +9,14 @@ var Fireball = preload("res://Scenes/Entities/Fireball.tscn")
 var reachable_resource
 
 func _input(event):
-	var attack_direction = Vector2.UP.angle_to(_get_attack_orientation())
+	
 	if event is InputEventMouseMotion and not animation.is_playing() and event.relative.length() > 5:
 		if equipped_weapon:
 			set_weapon_starting_pos()
-
-func _get_attack_orientation():
-	return get_global_mouse_position()-weapon.global_position
-
+			update_animation_position(_attack_orientation)
+			
 func _process(delta):
+	_attack_orientation = get_global_mouse_position()-weapon.global_position
 	super._process(delta)
 	#print($Weapon/HitBox.monitorable)
 	if Input.is_action_just_pressed("click") and not inventory_ui.visible and equipped_weapon:
@@ -33,7 +32,7 @@ func _process(delta):
 			
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * speed
+	velocity = velocity.move_toward(direction * SPEED, ACCELERATION * delta)
 	move_and_slide()
 		
 func _shoot(direction: Vector2):
@@ -54,8 +53,3 @@ func _on_reach_body_exited(body):
 		body.close()
 		inventory_ui.on_container_update(null)
 		reachable_resource = null
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name in ["stab_attack", "slash_attack"]:
-		weapon.get_node("HitBox").monitorable = false
-		set_weapon_starting_pos()

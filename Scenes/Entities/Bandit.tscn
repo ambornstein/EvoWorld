@@ -1,24 +1,28 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvk64esavlwss"]
+[gd_scene load_steps=15 format=3 uid="uid://dgvaf0yg5q588"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1_4c4uh"]
-[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Human.tscn" id="1_tdgw4"]
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="2_enjcn"]
-[ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Resources/Inventory/test_inv.tres" id="2_jr7sg"]
-[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="5_57sht"]
-[ext_resource type="Resource" uid="uid://141qwwc0nm1p" path="res://Resources/Item/spear.tres" id="5_mslvk"]
+[ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Human.tscn" id="1_6nhhm"]
+[ext_resource type="Script" path="res://Scripts/Entities/Enemy.gd" id="2_clshp"]
+[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="3_06nsb"]
+[ext_resource type="Resource" uid="uid://cn1rdqn3lujtm" path="res://Resources/Item/axe.tres" id="4_seder"]
+[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="5_jj6xe"]
 
-[sub_resource type="Resource" id="Resource_mia73"]
-script = ExtResource("5_57sht")
-item_data = ExtResource("5_mslvk")
+[sub_resource type="Resource" id="Resource_tobth"]
+script = ExtResource("3_06nsb")
+slot_array = Array[ExtResource("5_jj6xe")]([null, null, null, null, null, null, null, null, null, null, null, null])
+slot_restriction = null
+
+[sub_resource type="Resource" id="Resource_s32s7"]
+script = ExtResource("5_jj6xe")
+item_data = ExtResource("4_seder")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_0dxxq"]
-script = ExtResource("2_enjcn")
-slot_array = Array[ExtResource("5_57sht")]([null, SubResource("Resource_mia73"), null, null, null, null, null, null])
+[sub_resource type="Resource" id="Resource_50s56"]
+script = ExtResource("3_06nsb")
+slot_array = Array[ExtResource("5_jj6xe")]([null, SubResource("Resource_s32s7"), null, null, null, null, null, null])
 slot_restriction = 0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oxjvs"]
-radius = 28.75
+[sub_resource type="CircleShape2D" id="CircleShape2D_7a35m"]
+radius = 100.0
 
 [sub_resource type="Animation" id="Animation_n0y8g"]
 length = 0.001
@@ -136,27 +140,32 @@ _data = {
 "stab_attack": SubResource("Animation_odbto")
 }
 
-[node name="Player" node_paths=PackedStringArray("health", "animation") instance=ExtResource("1_tdgw4")]
-script = ExtResource("1_4c4uh")
-inventory = ExtResource("2_jr7sg")
-equipment = SubResource("Resource_0dxxq")
+[node name="Bandit" node_paths=PackedStringArray("health", "animation") instance=ExtResource("1_6nhhm")]
+script = ExtResource("2_clshp")
+TOLERANCE = 0.5
+inventory = SubResource("Resource_tobth")
+equipment = SubResource("Resource_50s56")
 health = NodePath("HealthComponent")
 animation = NodePath("AnimationPlayer")
 
 [node name="HitBox" parent="Weapon" index="0"]
-script = null
+collision_layer = 2
 
-[node name="Reach" type="Area2D" parent="." index="7"]
+[node name="HurtBox" parent="." index="5"]
+collision_mask = 4
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
 visible = false
 collision_layer = 0
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach" index="0"]
-shape = SubResource("CircleShape2D_oxjvs")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_7a35m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 "": SubResource("AnimationLibrary_om7jm")
 }
 
-[connection signal="body_entered" from="Reach" to="." method="_on_reach_body_entered"]
-[connection signal="body_exited" from="Reach" to="." method="_on_reach_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

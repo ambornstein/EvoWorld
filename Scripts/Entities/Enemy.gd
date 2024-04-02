@@ -1,4 +1,5 @@
-extends CharacterBody2D
+extends Human
+class_name Enemy
 
 enum {
 	IDLE,
@@ -8,12 +9,7 @@ enum {
 
 #@export var health: HealthComponent
 
-@export var ACCELERATION = 300
-@export var MAX_SPEED = 100
 @export var TOLERANCE = 0.5
-@export var health: HealthComponent
-
-@onready var sprite = $AnimatedSprite2D
 
 var state = IDLE
 
@@ -22,12 +18,23 @@ var target_displacement: Vector2
 var target_position: Vector2
 	
 func _process(delta):
-	target_displacement = target_position - global_position
+	_attack_orientation = target_displacement-weapon.position
+	super._process(delta)
+	
+	if follow_target:
+		target_displacement = follow_target.position - position
+		if not animation.is_playing():
+			set_weapon_starting_pos()
+			update_animation_position(_attack_orientation)
 	#print(target_displacement.normalized())
 
 func _physics_process(delta):
 	if follow_target != null:
-		velocity = velocity.move_toward(position.direction_to(follow_target.position) * MAX_SPEED, ACCELERATION * delta)
+		if position.distance_to(follow_target.position) > 50:
+			velocity = velocity.move_toward(position.direction_to(follow_target.position) * SPEED, ACCELERATION * delta)
+		else: 
+			velocity = velocity.move_toward(Vector2(0,0), ACCELERATION*delta)
+			#attack()
 	else:
 		match state:
 			IDLE:
@@ -35,7 +42,7 @@ func _physics_process(delta):
 				# Maybe wait for X seconds with a timer before moving on
 			WANDER:
 				random_target_position()
-				velocity = velocity.move_toward(target_displacement * MAX_SPEED, ACCELERATION * delta)
+				velocity = velocity.move_toward(target_displacement * SPEED, ACCELERATION * delta)
 				
 				if is_at_target_position():
 					velocity = Vector2(0,0)
@@ -55,9 +62,10 @@ func is_at_target_position():
 ###signals
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
+	if body is Player:
 		follow_target = body
 		print(body)
 
 func _on_area_2d_body_exited(body):
 	follow_target = null
+	#target_displacement = Vector2(0,0)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://c87dovsr3h0lu"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_fgeks"]
-[ext_resource type="PackedScene" uid="uid://bt0vhkk770jy4" path="res://Scenes/Entities/Enemy.tscn" id="3_l0cty"]
 [ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
 [ext_resource type="PackedScene" uid="uid://cvk64esavlwss" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
 [ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
 [ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/Item/InventoryGUI.tscn" id="6_gyqxb"]
+[ext_resource type="PackedScene" uid="uid://dgvaf0yg5q588" path="res://Scenes/Entities/Bandit.tscn" id="6_v6yol"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fgeks")
@@ -18,6 +18,7 @@ layer_1/y_sort_enabled = true
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(-131049, 2097152, 8, -131048, 2162688, 8, -262143, 1966080, 8, -262142, 2031616, 8)
 layer_2/y_sort_enabled = true
+layer_2/tile_data = PackedInt32Array(-131072, 458752, 9, -65536, 458752, 10, -131071, 524288, 9, -65535, 327680, 9, -131070, 524288, 9, -131069, 524288, 9, -131068, 524288, 9, -131067, 524288, 9, -131066, 524288, 9, -131065, 524288, 9, -131064, 524288, 9, -131063, 524288, 9, -131062, 524288, 9, -131061, 524288, 9, -131060, 524288, 9, -131059, 524288, 9, -131058, 393216, 10, -65522, 393216, 9, 14, 458752, 11, -131057, 327680, 10, -65521, 524288, 10, 15, 393216, 9, 65551, 458752, 11, 0, 458752, 10, 65536, 458752, 10, 131072, 458752, 10, 196608, 458752, 10, 262144, 458752, 10, 327680, 458752, 11, 1, 589824, 10, 65537, 589824, 10, 131073, 589824, 10, 196609, 589824, 10, 262145, 589824, 10, 327681, 589824, 11, -393202, 458752, 9, -327666, 458752, 10, -262130, 393216, 9, -196594, 458752, 10, -393201, 589824, 9, -327665, 589824, 10, -262129, 589824, 10, -196593, 589824, 10, -131056, 524288, 9, -65520, 524288, 10, 16, 524288, 10, 65552, 393216, 9, 131088, 458752, 10, 196624, 458752, 11, -131055, 589824, 9, -65519, 589824, 10, 17, 589824, 10, 65553, 589824, 10, 131089, 589824, 10, 196625, 589824, 11, -131086, 851968, 10, -393227, 851968, 10, -524303, 851968, 10, 262129, 851968, 10, 65520, 851968, 10, -12, 851968, 10, -327695, 851968, 10, -393224, 851968, 10, -524297, 851968, 10, -589815, 851968, 10, -327670, 851968, 10, -524277, 851968, 10, 327694, 851968, 10, 262147, 851968, 10, 393214, 851968, 10, 65528, 851968, 10, -327686, 983040, 9, -524293, 983040, 9, 65531, 983040, 9, -458746, 2686976, 10, -524281, 2686976, 10, -327674, 851968, 10, -393208, 2686976, 10, -131076, 983040, 9, 131069, 851968, 10, 262131, 3473408, 20, -196596, 3473408, 20, -589809, 3473408, 20, -655349, 3473408, 20, -655374, 3538944, 21, -786444, 3538944, 21, -458764, 3538944, 21, -589834, 3538944, 19, -131082, 2031616, 9, -10, 2097152, 9, -720904, 3538944, 21, -655365, 3604480, 19, -65541, 2097152, 9, -786436, 3670016, 19, -393220, 3538944, 21, 5, 3473408, 21, -65533, 524288, 11, -65534, 524288, 11, -65532, 524288, 11, -65531, 524288, 11, -65530, 524288, 11, -65529, 524288, 11, -65528, 524288, 11, -65527, 524288, 11, -65526, 524288, 11, -65525, 524288, 11, -65524, 524288, 11, -65523, 524288, 11, -196621, 851968, 10, -196623, 851968, 10, -65549, 851968, 10, -15, 851968, 10, -196625, 851968, 10, -327696, 851968, 10, -393233, 851968, 10)
 layer_3/y_sort_enabled = true
 layer_3/z_index = 3
 layer_4/y_sort_enabled = true
@@ -28,9 +29,6 @@ layer_4/tile_data = PackedInt32Array(-589826, 2228224, 22, -524290, 2228224, 22,
 z_index = 1
 position = Vector2(0, -137)
 
-[node name="Enemy" parent="." instance=ExtResource("3_l0cty")]
-position = Vector2(162, -31)
-
 [node name="Player" parent="." instance=ExtResource("4_jccrf")]
 position = Vector2(30, -6)
 
@@ -39,6 +37,7 @@ zoom = Vector2(2, 2)
 limit_smoothed = true
 
 [node name="InventoryGUI" parent="Player/Camera2D" instance=ExtResource("6_gyqxb")]
+visible = false
 z_index = 3
 offset_left = -199.0
 offset_top = -106.0
@@ -46,3 +45,6 @@ offset_right = 443.0
 offset_bottom = 274.0
 scale = Vector2(0.6, 0.6)
 metadata/_edit_use_anchors_ = true
+
+[node name="Bandit" parent="." instance=ExtResource("6_v6yol")]
+position = Vector2(224, -6)

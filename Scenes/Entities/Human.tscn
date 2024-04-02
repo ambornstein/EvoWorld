@@ -1,125 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvpj3dra8smu2"]
+[gd_scene load_steps=10 format=3 uid="uid://bvpj3dra8smu2"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Human.gd" id="1_huukj"]
 [ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_rgfdt"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HurtBox.gd" id="3_36vi1"]
 [ext_resource type="Script" path="res://Scripts/Entities/Behaviors/HealthComponent.gd" id="4_27l3h"]
-
-[sub_resource type="Animation" id="Animation_n0y8g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Character:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jbu2s"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1.51572, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_u48ai"]
-resource_name = "slash_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 2), Vector2(-6, -6), Vector2(-6, -6), Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.57603, -0.785398, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_odbto"]
-resource_name = "stab_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 2), Vector2(-9, -5), Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.523598, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_om7jm"]
-_data = {
-"RESET": SubResource("Animation_n0y8g"),
-"hurt": SubResource("Animation_jbu2s"),
-"slash_attack": SubResource("Animation_u48ai"),
-"stab_attack": SubResource("Animation_odbto")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amx0k"]
 atlas = ExtResource("2_rgfdt")
@@ -151,19 +35,11 @@ size = Vector2(16, 13)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ihhjg"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pehn5"]
-radius = 28.75
-
 [node name="Human" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_huukj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_om7jm")
-}
 
 [node name="Character" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_amx0k")
@@ -207,16 +83,4 @@ shape = SubResource("CircleShape2D_ihhjg")
 script = ExtResource("4_27l3h")
 max_health = 20
 
-[node name="Reach" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
-shape = SubResource("CircleShape2D_pehn5")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_area_entered"]
-[connection signal="area_entered" from="Reach" to="." method="_on_reach_area_entered"]
-[connection signal="area_exited" from="Reach" to="." method="_on_reach_area_exited"]
-[connection signal="body_entered" from="Reach" to="." method="_on_reach_body_entered"]
-[connection signal="body_exited" from="Reach" to="." method="_on_reach_body_exited"]
