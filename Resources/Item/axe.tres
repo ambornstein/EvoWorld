@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://cn1rdqn3lujtm"]
 
-[ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_krfvb"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/weapon_data.gd" id="1_717pr"]
 [ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_px5vy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d41mo"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_px5vy")
 region = Rect2(868, 35, 16, 16)
 
 [resource]
-script = ExtResource("1_krfvb")
+script = ExtResource("1_717pr")
 damage = 10
 strike_range = 10.0
 weapon_class = "Axe"

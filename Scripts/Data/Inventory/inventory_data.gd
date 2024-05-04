@@ -53,7 +53,16 @@ func can_accept(grabbed_slot_data: SlotData, index: int):
 			return true
 		[0]:
 			print(grabbed_slot_data.item_data.equip_type)
-			if grabbed_slot_data.item_data.equip_type == index:
-				return true
-			else:
-				return false
+			return grabbed_slot_data.item_data.equip_type == index
+
+func has_space():
+	return slot_array.find(null)
+
+func add_item(item: ItemData):
+	var first_empty = slot_array.find(null)
+	if first_empty:
+		var slot = SlotData.new()
+		slot.item_data = item
+		slot.quantity = 1
+		slot_array[first_empty] = slot
+		inventory_updated.emit(self)

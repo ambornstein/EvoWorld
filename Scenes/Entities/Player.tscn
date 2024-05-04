@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1_4c4uh"]
 [ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Human.tscn" id="1_tdgw4"]
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="2_enjcn"]
 [ext_resource type="Resource" uid="uid://v6cg4g8pcm4t" path="res://Resources/Inventory/test_inv.tres" id="2_jr7sg"]
-[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="5_57sht"]
-[ext_resource type="Resource" uid="uid://141qwwc0nm1p" path="res://Resources/Item/spear.tres" id="5_mslvk"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/inventory_data.gd" id="4_gs1da"]
+[ext_resource type="Resource" uid="uid://cn1rdqn3lujtm" path="res://Resources/Item/axe.tres" id="5_volle"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/slot_data.gd" id="6_4pkte"]
 
 [sub_resource type="Resource" id="Resource_mia73"]
-script = ExtResource("5_57sht")
-item_data = ExtResource("5_mslvk")
+script = ExtResource("6_4pkte")
+item_data = ExtResource("5_volle")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_0dxxq"]
-script = ExtResource("2_enjcn")
-slot_array = Array[ExtResource("5_57sht")]([null, SubResource("Resource_mia73"), null, null, null, null, null, null])
+script = ExtResource("4_gs1da")
+slot_array = Array[ExtResource("6_4pkte")]([null, SubResource("Resource_mia73"), null, null, null, null, null, null])
 slot_restriction = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxjvs"]
@@ -157,6 +157,7 @@ shape = SubResource("CircleShape2D_oxjvs")
 libraries = {
 "": SubResource("AnimationLibrary_om7jm")
 }
+speed_scale = 2.0
 
 [connection signal="body_entered" from="Reach" to="." method="_on_reach_body_entered"]
 [connection signal="body_exited" from="Reach" to="." method="_on_reach_body_exited"]

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="InventoryData" load_steps=10 format=3 uid="uid://rh31vyiwnjto"]
 
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="1_ky0as"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/inventory_data.gd" id="1_ky0as"]
 [ext_resource type="Resource" uid="uid://dp4k7f0fjx3ae" path="res://Resources/Item/sword.tres" id="2_q2cuf"]
-[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="3_jqqu5"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/slot_data.gd" id="3_jqqu5"]
 [ext_resource type="Resource" uid="uid://cn1rdqn3lujtm" path="res://Resources/Item/axe.tres" id="4_bqu85"]
 [ext_resource type="Resource" uid="uid://141qwwc0nm1p" path="res://Resources/Item/spear.tres" id="5_r6ker"]
 

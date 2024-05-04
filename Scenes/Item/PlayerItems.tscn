@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://firlsebipob2"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Inventory/Inventory.gd" id="1_awfc1"]
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="2_7inwd"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/inventory_data.gd" id="2_7inwd"]
 [ext_resource type="Resource" uid="uid://cq21s1c2q6f8a" path="res://Resources/Item/helmet.tres" id="3_0vto3"]
 [ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/Item/Slot.tscn" id="3_6a5je"]
-[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="3_xjhag"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/slot_data.gd" id="3_xjhag"]
 
 [sub_resource type="Resource" id="Resource_10kci"]
 script = ExtResource("3_xjhag")

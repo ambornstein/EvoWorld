@@ -5,11 +5,13 @@ class_name HealthComponent
 var health
 
 signal hurt
+signal change(current_health:int)
 
 func take_damage(value: int): 
 	health -= value
 	clamp(health, 0, max_health)
 	hurt.emit()
+	change.emit(health)
 	print("%s: %d/%d" % [owner.name, health, max_health])
 	
 # Called when the node enters the scene tree for the first time.

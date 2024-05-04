@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b8btbqqwb8jbu"]
+
+[node name="CharacterSheet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1
+"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skills
+"
+
+[node name="FlowContainer" type="FlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "Axe"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+toggle_mode = false
+
+[node name="CheckButton2" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+
+[node name="CheckButton3" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+
+[node name="FlowContainer2" type="FlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+text = "Sword"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+toggle_mode = false
+
+[node name="CheckButton2" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+
+[node name="CheckButton3" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+
+[node name="FlowContainer3" type="FlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+text = "Spear
+"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+toggle_mode = false
+
+[node name="CheckButton2" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+
+[node name="CheckButton3" type="CheckButton" parent="MarginContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2

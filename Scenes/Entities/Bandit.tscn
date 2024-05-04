@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgvaf0yg5q588"]
+[gd_scene load_steps=11 format=3 uid="uid://dgvaf0yg5q588"]
 
 [ext_resource type="PackedScene" uid="uid://bvpj3dra8smu2" path="res://Scenes/Entities/Human.tscn" id="1_6nhhm"]
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy.gd" id="2_clshp"]
-[ext_resource type="Script" path="res://Scripts/Data/inventory_data.gd" id="3_06nsb"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/inventory_data.gd" id="3_06nsb"]
 [ext_resource type="Resource" uid="uid://cn1rdqn3lujtm" path="res://Resources/Item/axe.tres" id="4_seder"]
-[ext_resource type="Script" path="res://Scripts/Data/slot_data.gd" id="5_jj6xe"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/slot_data.gd" id="5_jj6xe"]
+[ext_resource type="AnimationLibrary" uid="uid://bf14ikdcusnbd" path="res://human_animations.res" id="6_sl3fy"]
 
 [sub_resource type="Resource" id="Resource_tobth"]
 script = ExtResource("3_06nsb")
@@ -23,122 +24,6 @@ slot_restriction = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a35m"]
 radius = 100.0
-
-[sub_resource type="Animation" id="Animation_n0y8g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Character:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jbu2s"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1.51572, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_u48ai"]
-resource_name = "slash_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 2), Vector2(-6, -6), Vector2(-6, -6), Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.57603, -0.785398, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_odbto"]
-resource_name = "stab_attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-6, 2), Vector2(-9, -5), Vector2(-6, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -0.523598, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_om7jm"]
-_data = {
-"RESET": SubResource("Animation_n0y8g"),
-"hurt": SubResource("Animation_jbu2s"),
-"slash_attack": SubResource("Animation_u48ai"),
-"stab_attack": SubResource("Animation_odbto")
-}
 
 [node name="Bandit" node_paths=PackedStringArray("health", "animation") instance=ExtResource("1_6nhhm")]
 script = ExtResource("2_clshp")
@@ -164,8 +49,9 @@ shape = SubResource("CircleShape2D_7a35m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
-"": SubResource("AnimationLibrary_om7jm")
+"": ExtResource("6_sl3fy")
 }
+speed_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

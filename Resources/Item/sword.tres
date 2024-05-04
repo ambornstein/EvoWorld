@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://dp4k7f0fjx3ae"]
 
-[ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_kylxi"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/weapon_data.gd" id="1_kylxi"]
 [ext_resource type="Texture2D" uid="uid://cqs6mdt8v5xvk" path="res://Tiles/Castle/roguelikeChar_transparent.png" id="2_uxjr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oexm"]

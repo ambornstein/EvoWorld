@@ -9,7 +9,6 @@
 radius = 8.0
 
 [node name="Tree" type="StaticBody2D"]
-collision_layer = 17
 collision_mask = 0
 script = ExtResource("1_5s480")
 
@@ -22,7 +21,7 @@ shape = SubResource("CircleShape2D_dtb1k")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_bar")]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 16
 script = ExtResource("3_j0swy")
 health_bar = NodePath("../HealthComponent")
 

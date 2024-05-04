@@ -26,26 +26,24 @@ func _process(delta):
 		if not animation.is_playing():
 			set_weapon_starting_pos()
 			update_animation_position(_attack_orientation)
+			attack()
 	#print(target_displacement.normalized())
 
 func _physics_process(delta):
-	if follow_target != null:
+	if follow_target:
 		if position.distance_to(follow_target.position) > 50:
-			velocity = velocity.move_toward(position.direction_to(follow_target.position) * SPEED, ACCELERATION * delta)
-		else: 
-			velocity = velocity.move_toward(Vector2(0,0), ACCELERATION*delta)
-			#attack()
+			velocity = position.direction_to(follow_target.position) * SPEED
 	else:
 		match state:
 			IDLE:
 				state = WANDER
-				# Maybe wait for X seconds with a timer before moving on
 			WANDER:
 				random_target_position()
-				velocity = velocity.move_toward(target_displacement * SPEED, ACCELERATION * delta)
+				velocity = position.direction_to(target_position) * SPEED
 				
 				if is_at_target_position():
 					velocity = Vector2(0,0)
+					await get_tree().create_timer(3).timeout
 					state = IDLE
 	move_and_slide()
 
@@ -53,7 +51,7 @@ func random_target_position():
 	var rng = RandomNumberGenerator.new()
 	var target_vector = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
 	#var target_vector = Vector2(2, 0)
-	target_position = global_position + target_vector
+	target_position = position + target_vector
 	
 func is_at_target_position(): 
 	# Stop moving when at target +/- tolerance

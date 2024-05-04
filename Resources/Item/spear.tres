@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://141qwwc0nm1p"]
 
-[ext_resource type="Script" path="res://Scripts/Data/weapon_data.gd" id="1_gg8vq"]
+[ext_resource type="Script" path="res://Scripts/Data/Inventory/weapon_data.gd" id="1_gg8vq"]
 [ext_resource type="Texture2D" uid="uid://irqiivjokfxg" path="res://Resources/Item/sprites/spear_sprite.tres" id="2_ihhjq"]
 
 [resource]

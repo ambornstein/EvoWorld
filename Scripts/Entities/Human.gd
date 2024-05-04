@@ -4,12 +4,10 @@ class_name Human
 @export var inventory: InventoryData
 @export var equipment: InventoryData
 @export var health: HealthComponent
-@export var SPEED = 150  # speed in pixels/sec
-@export var ACCELERATION = 400
+@export var SPEED = 100  # speed in pixels/sec
+@export var animation: AnimationPlayer
 
 @onready var sprite = $Character
-
-@export var animation: AnimationPlayer
 
 @onready var helmet_sprite = $Helmet
 @onready var chestplate_sprite = $Chestplate
@@ -27,6 +25,7 @@ var _attack_orientation = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation.animation_finished.connect(_on_animation_player_animation_finished)
 	health.hurt.connect(animation.queue.bind("hurt"))
 	equip_armaments(equipment)
 	equipment.inventory_updated.connect(equip_armaments)
@@ -53,12 +52,12 @@ func attack():
 	#print(anim.track_get_key_value(1, 1))
 	
 	#$Weapon.rotation_degrees = rad_to_deg(position.angle_to(direction))
-	if equipped_weapon:
+	if equipped_weapon and not animation.is_playing():
 		if equipped_weapon.weapon_class in ["Axe", "Sword", "Mace", "Flail"]:
-			slash_half_arc = 1
+			#slash_half_arc = 1
 			animation.queue("slash_attack")
 		elif equipped_weapon.weapon_class in ["Spear", "Dagger", "Staff"]:
-			slash_half_arc = 0
+			#slash_half_arc = 0
 			animation.queue("stab_attack")
 			
 func equip_armaments(inv: InventoryData):
