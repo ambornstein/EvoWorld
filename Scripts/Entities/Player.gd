@@ -26,7 +26,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if reachable_resource:
 			reachable_resource.open()
-			get_parent().inventory_ui.show()
+			get_parent().toggle_inventory_interface()
 			
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -42,12 +42,11 @@ func _shoot(direction: Vector2):
 
 func _on_reach_body_entered(body):
 	if body.name == "Chest":
-		get_parent().inventory_ui.on_container_update(body.inventory)
 		get_parent().inventory_ui.set_container_inventory_data(body.inventory)
 		reachable_resource = body
 
 func _on_reach_body_exited(body):
 	if reachable_resource == body:
 		body.close()
-		get_parent().inventory_ui.on_container_update(null)
+		get_parent().inventory_ui.disconnect_container_inventory()
 		reachable_resource = null

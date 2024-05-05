@@ -11,7 +11,7 @@
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("inventory_ui", "player", "health_bar", "xp_bar")]
 script = ExtResource("1_fgeks")
-inventory_ui = NodePath("Player/Camera2D/UI/TabBar/Inventory")
+inventory_ui = NodePath("Player/Camera2D/UI/TabBar/TabContainer/Inventory")
 player = NodePath("Player")
 health_bar = NodePath("Player/Camera2D/UI/VBoxContainer/HealthBar")
 xp_bar = NodePath("Player/Camera2D/UI/VBoxContainer/XPBar")
@@ -104,23 +104,29 @@ grow_horizontal = 2
 text = "XP
 "
 
-[node name="TabBar" type="TabContainer" parent="Player/Camera2D/UI"]
+[node name="TabBar" type="TabBar" parent="Player/Camera2D/UI"]
 layout_mode = 0
-offset_left = -136.0
-offset_top = -126.0
-offset_right = 107.0
-offset_bottom = -95.0
-scale = Vector2(0.6, 0.6)
-clip_tabs = false
-tab_focus_mode = 0
+offset_left = -169.0
+offset_top = -112.0
+offset_right = 73.0
+offset_bottom = -72.0
 
-[node name="Inventory" parent="Player/Camera2D/UI/TabBar" instance=ExtResource("6_gyqxb")]
+[node name="TabContainer" type="TabContainer" parent="Player/Camera2D/UI/TabBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Inventory" parent="Player/Camera2D/UI/TabBar/TabContainer" instance=ExtResource("6_gyqxb")]
 z_index = 3
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Stats" parent="Player/Camera2D/UI/TabBar" instance=ExtResource("6_3bcoo")]
-visible = false
+[node name="TabContainer2" type="TabContainer" parent="Player/Camera2D/UI/TabBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CharacterSheet" parent="Player/Camera2D/UI/TabBar/TabContainer2" instance=ExtResource("6_3bcoo")]
 layout_mode = 2
 
 [node name="Bandit" parent="." instance=ExtResource("6_v6yol")]

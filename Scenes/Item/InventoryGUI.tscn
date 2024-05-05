@@ -10,12 +10,12 @@
 layout_mode = 3
 anchors_preset = 0
 offset_right = 701.0
-offset_bottom = 380.0
+offset_bottom = 306.0
 script = ExtResource("1_dvlj7")
 
 [node name="PlayerInventory" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 425.0
+offset_right = 414.0
 offset_bottom = 306.0
 
 [node name="HFlowContainer" type="HFlowContainer" parent="PlayerInventory"]
@@ -42,11 +42,12 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="ContainerInventory" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 469.0
-offset_top = 74.0
-offset_right = 701.0
-offset_bottom = 306.0
+offset_left = 450.0
+offset_top = 43.0
+offset_right = 682.0
+offset_bottom = 276.0
 
 [node name="ItemPanel" type="MarginContainer" parent="ContainerInventory"]
 layout_mode = 2

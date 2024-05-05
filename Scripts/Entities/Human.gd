@@ -6,6 +6,7 @@ class_name Human
 @export var health: HealthComponent
 @export var SPEED = 100  # speed in pixels/sec
 @export var animation: AnimationPlayer
+@export var stats: CharacterData
 
 @onready var sprite = $Character
 

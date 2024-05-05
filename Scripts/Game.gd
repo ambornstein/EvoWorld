@@ -4,9 +4,10 @@ extends Node2D
 @export var player: Player
 @export var health_bar: ProgressBar
 @export var xp_bar: ProgressBar
+@onready var tab_bar = $Player/Camera2D/UI/TabBar
 
 func toggle_inventory_interface():
-	inventory_ui.visible = not inventory_ui.visible
+	tab_bar.visible = not tab_bar.visible
 #
 func _ready():
 	inventory_ui.set_player_inventory_data(player.inventory, player.equipment)
