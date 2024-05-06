@@ -1,7 +1,7 @@
 extends GridContainer
 class_name Inventory
 
-const Slot = preload("res://Scenes/Item/Slot.tscn")
+const Slot = preload("res://Scenes/UI/Slot.tscn")
 
 func set_inventory_data(inv_data: InventoryData):
 	print("setting")

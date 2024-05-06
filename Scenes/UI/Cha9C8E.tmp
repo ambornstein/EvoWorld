@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8btbqqwb8jbu"]
 
 [ext_resource type="Texture2D" uid="uid://cv0qvtcpxhhe5" path="res://skill_free.png" id="1_mnq8q"]
-[ext_resource type="Script" path="res://Scripts/Entities/Inventory/CharacterSheet.gd" id="1_ybd3m"]
+[ext_resource type="Script" path="res://Scenes/UI/CharacterSheet.gd" id="1_ybd3m"]
 [ext_resource type="Texture2D" uid="uid://bh4txc70j2nm2" path="res://skill_obtained.png" id="2_c8yas"]
 
 [node name="CharacterSheet" type="Control"]
@@ -169,5 +169,4 @@ text = "Reset"
 layout_mode = 2
 text = "Apply"
 
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ResetButton" to="." method="reset"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ApplyButton" to="." method="modify_stats"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://6gheqrx4n5q8"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Inventory/inventory_gui.gd" id="1_dvlj7"]
+[ext_resource type="PackedScene" uid="uid://b4bkhoptxm3dl" path="res://Scenes/UI/ContainerItems.tscn" id="2_8lymp"]
+[ext_resource type="PackedScene" uid="uid://firlsebipob2" path="res://Scenes/UI/PlayerItems.tscn" id="3_f2mla"]
+[ext_resource type="PackedScene" uid="uid://dcyppwwqo2xy3" path="res://Scenes/UI/EquipmentPanel.tscn" id="3_o0v2b"]
+[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/UI/Slot.tscn" id="5_b1sax"]
+
+[node name="InventoryGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 701.0
+offset_bottom = 306.0
+script = ExtResource("1_dvlj7")
+
+[node name="PlayerInventory" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 414.0
+offset_bottom = 306.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PlayerInventory"]
+layout_mode = 2
+
+[node name="EquipmentPanel" type="MarginContainer" parent="PlayerInventory/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="EquipmentGrid" parent="PlayerInventory/HFlowContainer/EquipmentPanel" instance=ExtResource("3_o0v2b")]
+layout_mode = 2
+
+[node name="ItemPanel" type="MarginContainer" parent="PlayerInventory/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemGrid" parent="PlayerInventory/HFlowContainer/ItemPanel" instance=ExtResource("3_f2mla")]
+layout_mode = 2
+
+[node name="ContainerInventory" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 450.0
+offset_top = 43.0
+offset_right = 682.0
+offset_bottom = 276.0
+
+[node name="ItemPanel" type="MarginContainer" parent="ContainerInventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemGrid" parent="ContainerInventory/ItemPanel" instance=ExtResource("2_8lymp")]
+layout_mode = 2
+
+[node name="Slot" parent="." instance=ExtResource("5_b1sax")]
+visible = false
+modulate = Color(1, 1, 1, 0.560784)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -10.7
+anchor_top = 4.7
+anchor_right = -9.1
+anchor_bottom = 6.3
+offset_left = 6869.4
+offset_top = -1786.0
+offset_right = 5906.2
+offset_bottom = -2330.0

@@ -1,13 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://c87dovsr3h0lu"]
+[gd_scene load_steps=11 format=3 uid="uid://c87dovsr3h0lu"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_fgeks"]
 [ext_resource type="PackedScene" uid="uid://bg0ruvkoet43p" path="res://Maps/Castle.tscn" id="3_ufmb6"]
 [ext_resource type="PackedScene" uid="uid://cvk64esavlwss" path="res://Scenes/Entities/Player.tscn" id="4_jccrf"]
+[ext_resource type="Script" path="res://Scripts/Data/character_data.gd" id="5_fxd7d"]
 [ext_resource type="PackedScene" uid="uid://b8axsn76dn2hx" path="res://Scenes/Structures/Chest.tscn" id="5_pgh71"]
 [ext_resource type="PackedScene" uid="uid://b8btbqqwb8jbu" path="res://Scenes/UI/CharacterSheet.tscn" id="6_3bcoo"]
-[ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/Item/InventoryGUI.tscn" id="6_gyqxb"]
+[ext_resource type="PackedScene" uid="uid://6gheqrx4n5q8" path="res://Scenes/UI/InventoryGUI.tscn" id="6_gyqxb"]
 [ext_resource type="PackedScene" uid="uid://dgvaf0yg5q588" path="res://Scenes/Entities/Bandit.tscn" id="6_v6yol"]
 [ext_resource type="PackedScene" uid="uid://quluxmu60nxj" path="res://Scenes/Item/Item.tscn" id="7_7xiox"]
+
+[sub_resource type="Resource" id="Resource_87m85"]
+script = ExtResource("5_fxd7d")
+level = 1
+xp = 0
+points = 3
+axe_skill = 2
+sword_skill = 2
+spear_skill = 0
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("inventory_ui", "player", "health_bar", "xp_bar")]
 script = ExtResource("1_fgeks")
@@ -40,6 +50,7 @@ position = Vector2(0, -137)
 [node name="Player" parent="." instance=ExtResource("4_jccrf")]
 position = Vector2(19, -18)
 SPEED = 150
+stats = SubResource("Resource_87m85")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

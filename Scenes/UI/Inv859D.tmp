@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://6gheqrx4n5q8"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Inventory/inventory_gui.gd" id="1_dvlj7"]
-[ext_resource type="PackedScene" uid="uid://b4bkhoptxm3dl" path="res://Scenes/Item/ContainerItems.tscn" id="2_8lymp"]
-[ext_resource type="PackedScene" uid="uid://firlsebipob2" path="res://Scenes/Item/PlayerItems.tscn" id="3_f2mla"]
-[ext_resource type="PackedScene" uid="uid://dcyppwwqo2xy3" path="res://Scenes/Item/EquipmentPanel.tscn" id="3_o0v2b"]
-[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/Item/Slot.tscn" id="5_b1sax"]
+[ext_resource type="PackedScene" uid="uid://b4bkhoptxm3dl" path="res://Scenes/UI/ContainerItems.tscn" id="2_8lymp"]
+[ext_resource type="PackedScene" uid="uid://firlsebipob2" path="res://Scenes/UI/PlayerItems.tscn" id="3_f2mla"]
+[ext_resource type="PackedScene" uid="uid://dcyppwwqo2xy3" path="res://Scenes/UI/EquipmentPanel.tscn" id="3_o0v2b"]
+[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/UI/Slot.tscn" id="5_b1sax"]
 
 [node name="InventoryGUI" type="Control"]
 layout_mode = 3

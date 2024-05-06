@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Entities/Inventory/Inventory.gd" id="1_maihk"]
 [ext_resource type="Resource" uid="uid://rh31vyiwnjto" path="res://Resources/Inventory/chest_inv.tres" id="2_dhlsj"]
-[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/Item/Slot.tscn" id="2_tw1ty"]
+[ext_resource type="PackedScene" uid="uid://dctitjce7t4dn" path="res://Scenes/UI/Slot.tscn" id="2_tw1ty"]
 
 [node name="ItemGrid" type="GridContainer"]
 offset_left = 10.0

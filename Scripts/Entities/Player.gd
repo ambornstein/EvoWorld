@@ -17,7 +17,7 @@ func _process(delta):
 	_attack_orientation = get_global_mouse_position()-weapon.global_position
 	super._process(delta)
 	#print($Weapon/HitBox.monitorable)
-	if Input.is_action_just_pressed("click") and not get_parent().inventory_ui.visible and equipped_weapon:
+	if Input.is_action_just_pressed("click") and not get_parent().tab_bar.visible and equipped_weapon:
 		attack()
 	#if Input.is_action_just_pressed("click"):
 		#print(get_global_mouse_position())
